@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CreateController;
 use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\DiscoverController;
@@ -54,7 +55,7 @@ Route::middleware('auth')->group(function () {
     
     // Create Page
     Route::get('/create', [CreateController::class, 'view'])->name('create.view');
-    Route::post('/create', [CreateController::class, 'upload'])->name('create.upload');
+    Route::post('/create', [CreateController::class, 'save'])->name('create.save');
     
     // Galery Page
     Route::get('/galery', [GaleryController::class, 'view'])->name('galery.view');
@@ -67,6 +68,9 @@ Route::middleware('auth')->group(function () {
     // Likes to Pictures
     Route::post('/picture', [PictureController::class, 'like'])->name('picture.like');
     Route::delete('/picture', [PictureController::class, 'delete'])->name('picture.destroy');
+
+    // Comments to Pictures
+    Route::post('/comment', [CommentController::class, 'save'])->name('comment.save');
     
 });
 

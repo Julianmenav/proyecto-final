@@ -1,7 +1,5 @@
 import usePicture from "@/Hooks/usePicture";
-import { Link, useForm, usePage } from "@inertiajs/react";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { Link, usePage } from "@inertiajs/react";
 
 export default function PictureCard({ picture, ownPicture, liked, remove }) {
     const authUser = usePage().props.auth.user;

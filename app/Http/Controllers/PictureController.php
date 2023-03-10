@@ -14,11 +14,10 @@ class PictureController extends Controller
 {
     public function view(Request $request, $picture_id )
     {
-        $picture = Picture::with('user')->withCount('like')->find($picture_id);
+        $picture = Picture::with('user', 'comment.user')->withCount('like')->find($picture_id);
         if(!$picture){
             abort('404');
         }
-
 
         $ownPicture = Auth::id() == $picture->user_id;
         $liked = $picture->like()->where('user_id', Auth::id())->exists();

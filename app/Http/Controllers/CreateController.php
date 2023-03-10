@@ -12,7 +12,7 @@ use Inertia\Inertia;
 
 class CreateController extends Controller
 {
-    public function upload(Request $request)
+    public function save(Request $request)
     {
         $request->validate([
             'description' => 'required|string|max:255',

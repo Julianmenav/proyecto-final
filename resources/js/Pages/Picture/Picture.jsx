@@ -2,42 +2,53 @@ import usePicture from "@/Hooks/usePicture";
 import GlobalLayout from "@/Layouts/GlobalLayout";
 import { Head } from "@inertiajs/react";
 import React, { useEffect, useState } from "react";
+import CommentBox from "./Partials/CommentBox";
+import CommentSection from "./Partials/CommentSection";
 
 export default function Picture({ picture, auth, errors, liked, ownPicture }) {
-    
-    const {id, like, likeCount, likePicture, deletePicture} = usePicture(picture, liked)
+    const { id, like, likeCount, likePicture, deletePicture } = usePicture(picture,liked);
     const [deleted, setDeleted] = useState(false);
+    console.log(picture);
 
     function handleLike(e) {
-        if(deleted) return;
+        if (deleted) return;
         e.preventDefault();
 
         likePicture();
     }
 
     function handleDelete(e) {
-      if (deleted) return;
-      e.preventDefault();
+        if (deleted) return;
+        e.preventDefault();
 
-      deletePicture();
-      setDeleted(true);
+        deletePicture();
+        setDeleted(true);
     }
 
     return (
         <GlobalLayout auth={auth} errors={errors}>
             <Head title={`Obra de ${picture.user.name}`} />
 
-            <div className="flex justify-center items-center h-full text-white">
+            <section className="flex flex-col justify-center items-center h-full text-white">
                 <div className="">
                     <div className="flex align-center items-center">
                         {picture.user.name}{" "}
                         <img
                             src={picture.user.profile_pic}
                             alt="profilePic"
-                            className={`w-10 h-10 rounded-full object-cover`}
+                            className={`w-5 h-5 rounded-full object-cover`}
                         />
                     </div>
-                    <img className={`max-w-2xl ${deleted? 'brightness-50':''}`} src={picture.image_url} alt="" />
+                    <img
+                        className={`max-w-2xl min-h-[400px]${
+                            deleted ? "brightness-50" : ""
+                        }`}
+                        src={picture.image_url}
+                        alt=""
+                    />
+                    <div>
+                        {picture.description}
+                    </div>
                     <div>
                         <button
                             onClick={handleLike}
@@ -57,7 +68,11 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
                         )}
                     </div>
                 </div>
-            </div>
+
+                <CommentBox picture_id={id}/>
+
+                <CommentSection picture={picture} />
+            </section>
         </GlobalLayout>
     );
 }

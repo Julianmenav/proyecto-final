@@ -9,6 +9,12 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'picture_id',
+        'comment_text'
+    ];
+
     public function picture() {
         return $this->belongsTo(Picture::class);
     }

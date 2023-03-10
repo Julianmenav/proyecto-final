@@ -27,6 +27,11 @@ export default function Discover({ auth, errors, picturesPag, morePages }) {
         })
     }
 
+    const removeImg = (id) => {
+        const newItems = pictures.filter((pic) => pic.id !== id);
+        setPictures(newItems);
+    }
+
     return (
         <GlobalLayout auth={auth} errors={errors}>
             <Head title="Descubre otras obras" />
@@ -42,6 +47,7 @@ export default function Discover({ auth, errors, picturesPag, morePages }) {
                             picture={picture}
                             liked={liked}
                             ownPicture={ownPicture}
+                            remove={removeImg}
                             key={idx}
                         />
                     );

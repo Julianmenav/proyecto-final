@@ -2,14 +2,11 @@ import { Link, useForm, usePage } from "@inertiajs/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function PictureCard({ picture, ownPicture, liked }) {
+export default function PictureCard({ picture, ownPicture, liked, remove }) {
     const authUser = usePage().props.auth.user;
     const {
         data,
         setData,
-        post,
-        delete: destroy,
-        processing,
     } = useForm({
         picture_id: picture.id,
         liked: liked,
@@ -32,17 +29,14 @@ export default function PictureCard({ picture, ownPicture, liked }) {
         }
     };
 
-    const deletePicture = (e) => {
-        e.preventDefault();
-
-        destroy(route("picture.destroy"), {
-            preserveScroll: true,
-        });
+    const deletePicture = () => {
+        axios.delete(route("picture.destroy", {picture_id: data.picture_id}))
+        remove(data.picture_id)
     };
 
     return (
         <div className="">
-            <div className="rounded-md overflow-hidden relative">
+            <div className="rounded-md overflow-hidden relative w-full aspect-video">
                 <Link
                     href={route("picture.view", {
                         picture_id: data.picture_id,

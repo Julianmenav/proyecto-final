@@ -34,12 +34,9 @@ class PictureController extends Controller
     
     public function delete(Request $request)
     {
-        // dd($request);
         $picture = Picture::find($request->picture_id);
         $storage_path = str_replace('/storage', '/public', $picture->image_url);
         $picture->delete();
-        Storage::delete($storage_path);
-        
-        return Redirect::route('discover.view');
+        Storage::delete($storage_path);   
     }
 }

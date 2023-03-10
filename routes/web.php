@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 use App\Models\Picture;
+use Illuminate\Support\Facades\Redirect;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,7 +45,8 @@ Route::get('/', [WelcomeController::class, 'view'])->name('welcome.view');
 // Discover Page
 Route::get('/discover', [DiscoverController::class, 'view'])->name('discover.view');
 //Picture Page
-Route::get('/picture/{picture_id?}', [PictureController::class, 'view'])->name('picture.view');
+Route::get('/picture', function(){return Redirect::route('discover.view');});
+Route::get('/picture/{picture_id}', [PictureController::class, 'view'])->name('picture.view');
 
 
 // AUTH PAGES

@@ -1,37 +1,21 @@
+import usePicture from "@/Hooks/usePicture";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function PictureCard({ picture, ownPicture, liked, remove }) {
     const authUser = usePage().props.auth.user;
-    const {
-        data,
-        setData,
-    } = useForm({
-        picture_id: picture.id,
-        liked: liked,
-        like_count: picture.like_count,
-    });
 
-    useEffect(() => {
-        setData("picture_id", picture.id);
-    }, [picture]);
+    const { id, like, likeCount, likePicture, deletePicture } = usePicture(
+        picture,
+        liked
+    );
 
-    const likePicture = (e) => {
+    const handleDelete = (e) => {
         e.preventDefault();
 
-        axios.post(route("picture.like", { picture_id: data.picture_id }));
-
-        if (data.liked) {
-            setData((prev) => ({...prev, like_count: data.like_count - 1, liked: !data.liked }));
-          } else {
-            setData((prev) => ({...prev, like_count: data.like_count + 1, liked: !data.liked }));
-        }
-    };
-
-    const deletePicture = () => {
-        axios.delete(route("picture.destroy", {picture_id: data.picture_id}))
-        remove(data.picture_id)
+        deletePicture();
+        remove(id);
     };
 
     return (
@@ -39,7 +23,7 @@ export default function PictureCard({ picture, ownPicture, liked, remove }) {
             <div className="rounded-md overflow-hidden relative w-full aspect-video">
                 <Link
                     href={route("picture.view", {
-                        picture_id: data.picture_id,
+                        picture_id: id,
                     })}
                 >
                     <img
@@ -53,26 +37,22 @@ export default function PictureCard({ picture, ownPicture, liked, remove }) {
                     <div className="text-white">{picture.user.name}</div>
                     <div className="flex">
                         {authUser && (
-                            <form onSubmit={likePicture}>
-                                <button
-                                    type="submit"
-                                    className={`${
-                                        data.liked ? "bg-red-400" : "bg-white"
-                                    } px-2`}
-                                >
-                                    {data.like_count}
-                                </button>
-                            </form>
+                            <button
+                                onClick={likePicture}
+                                className={`${
+                                    like ? "bg-red-400" : "bg-white"
+                                } px-2 text-black`}
+                            >
+                                {likeCount}
+                            </button>
                         )}
-                        {ownPicture && (
-                            <form onSubmit={deletePicture}>
-                                <button
-                                    type="submit"
-                                    className="bg-white border border-black"
-                                >
-                                    borrar
-                                </button>
-                            </form>
+                        {true && (
+                            <button
+                                onClick={handleDelete}
+                                className="bg-white border border-black text-black"
+                            >
+                                borrar
+                            </button>
                         )}
                     </div>
                 </div>

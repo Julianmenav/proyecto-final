@@ -12,13 +12,17 @@ use Inertia\Inertia;
 
 class PictureController extends Controller
 {
-    public function view(Request $request, $picture_id = 0)
+    public function view(Request $request, $picture_id )
     {
-        if ($picture_id == 0) {
-            dd($request, 'NOT FOUND PAGE');
-        }
         $picture = Picture::with('user')->withCount('like')->find($picture_id);
-        return Inertia::render('Picture/Picture', ['picture' => $picture]);
+        if(!$picture){
+            abort('404');
+        }
+
+
+        $ownPicture = Auth::id() == $picture->user_id;
+        $liked = $picture->like()->where('user_id', Auth::id())->exists();
+        return Inertia::render('Picture/Picture', ['picture' => $picture, 'ownPicture' => $ownPicture, 'liked' => $liked]);
     }
 
     public function like(Request $request)

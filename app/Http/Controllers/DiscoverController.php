@@ -10,7 +10,19 @@ class DiscoverController extends Controller
 {
     public function view(Request $request) {
         // Por ahora el unico controlador muestra las que tienen mas likes.
-        $pictures = Picture::with('user')->with('like')->withCount('like')->orderBy('like_count','desc')->get();
-        return Inertia::render('Discover/Discover', ['pictures' => $pictures]);
+
+        $paginator = Picture::with('user')->with('like')->withCount('like')->orderBy('like_count','desc')->cursorPaginate(6);
+        $morePages = $paginator->hasMorePages();
+
+        if($paginator->onFirstPage()){
+            return Inertia::render('Discover/Discover', ['picturesPag' => $paginator, 'morePages' => $morePages]);
+        }
+        
+        $nextPage = $paginator->onLastPage() ? '' : $paginator->nextPageUrl();
+        $pictures = $paginator->items();
+
+        return json_encode(['pictures' => $pictures,'next_page_url' => $nextPage,'morePages' => $morePages]);
+
     }
+    
 }

@@ -2,6 +2,7 @@ import { router, usePage } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 
 export default function useSort() {
+    const {location} = usePage().props.ziggy
     const { category, order } = usePage().props;
     const [firstRender, setFirstRender] = useState(true);
     const [sortOrder, setSortOrder] = useState(order ?? "desc");
@@ -9,16 +10,14 @@ export default function useSort() {
 
     useEffect(() => {
         if (firstRender) return setFirstRender(false);
-        router.get(
-            route("discover.view", {
+        router.get(location,
+            {
                 sortOrder: sortOrder,
                 sortCategory: sortCategory,
-            })
-        ),
+            },
             {
-                preserveState: true,
                 preserveScroll: true,
-            };
+            });
     }, [sortOrder, sortCategory]);
 
     const handleOrder = () => {
@@ -29,9 +28,8 @@ export default function useSort() {
     };
 
     const handleCategory = (e) => {
-        setSortCategory(e.target.value)
-    }
+        setSortCategory(e.target.value);
+    };
 
-
-    return {sortCategory, sortOrder, handleOrder, handleCategory}
+    return { sortCategory, sortOrder, handleOrder, handleCategory };
 }

@@ -34,10 +34,10 @@ export default function AuthenticatedNavbar({user}) {
                                 Creador de Imágenes
                             </NavLink>
                             <NavLink
-                                href={route("galery.view")}
-                                active={route().current("galery.view")}
+                                href={route("dashboard.view")}
+                                active={route().current("dashboard.view")}
                             >
-                                Galería
+                                Dashboard
                             </NavLink>
                         </div>
                     </div>
@@ -148,10 +148,10 @@ export default function AuthenticatedNavbar({user}) {
                         Creador de Imágenes
                     </ResponsiveNavLink>
                     <ResponsiveNavLink
-                        href={route("galery.view")}
-                        active={route().current("galery.view")}
+                        href={route("dashboard.view")}
+                        active={route().current("dashboard.view")}
                     >
-                        Galería
+                        Dashboard
                     </ResponsiveNavLink>
                 </div>
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CreateController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\DiscoverController;
 use App\Http\Controllers\PictureController;
@@ -57,8 +58,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/create', [CreateController::class, 'view'])->name('create.view');
     Route::post('/create', [CreateController::class, 'save'])->name('create.save');
     
-    // Galery Page
-    Route::get('/galery', [GaleryController::class, 'view'])->name('galery.view');
+    // Dashboard Page
+    Route::get('/dashboard', [DashboardController::class, 'view'])->name('dashboard.view');
     
     // Profile Page
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

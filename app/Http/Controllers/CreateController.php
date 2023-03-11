@@ -30,7 +30,7 @@ class CreateController extends Controller
             'user_id' => $userId
         ]);
 
-        return Redirect::route('galery.view');
+        return Redirect::route('dashboard.view');
         // return Redirect::route('picture.view', $picture->id);
     }
 

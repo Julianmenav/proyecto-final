@@ -11,11 +11,6 @@ export default function CommentBox({picture_id}) {
         picture_id: picture_id
     });
 
-    useEffect(() => {
-        setData('picture_id', picture_id)
-    }, [picture_id])
-    
-
     const postComment = (e) => {
         e.preventDefault();
 

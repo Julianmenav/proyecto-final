@@ -8,7 +8,6 @@ import CommentSection from "./Partials/CommentSection";
 export default function Picture({ picture, auth, errors, liked, ownPicture }) {
     const { id, like, likeCount, likePicture, deletePicture } = usePicture(picture,liked);
     const [deleted, setDeleted] = useState(false);
-    console.log(picture);
 
     function handleLike(e) {
         if (deleted) return;
@@ -58,7 +57,7 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
                         >
                             {likeCount}
                         </button>
-                        {true && (
+                        {ownPicture && (
                             <button
                                 onClick={handleDelete}
                                 className="bg-white border border-black text-black"

@@ -24,12 +24,16 @@ class CommentController extends Controller
 
     public function update(Request $request)
     {
+        $comment = Comment::find($request->id);
+        $comment->comment_text = $request->comment_text;
+        $comment->save();
+        // return Redirect::route('picture.view', ['picture_id' => $request->picture_id]);
     }
 
     public function delete(Request $request)
     {
         $comment = Comment::find($request->id);
-        if(Auth::id() !== $comment->user_id) return;
+        if (Auth::id() !== $comment->user_id) return;
 
         $comment->delete();
     }

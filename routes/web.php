@@ -67,11 +67,12 @@ Route::middleware('auth')->group(function () {
     
     // Likes to Pictures
     Route::post('/picture', [PictureController::class, 'like'])->name('picture.like');
-    Route::delete('/picture', [PictureController::class, 'delete'])->name('picture.destroy');
+    Route::delete('/picture', [PictureController::class, 'delete'])->name('picture.delete');
 
     // Comments to Pictures
     Route::post('/comment', [CommentController::class, 'save'])->name('comment.save');
-    Route::delete('/comment', [CommentController::class, 'delete'])->name('comment.destroy');
+    Route::put('/comment', [CommentController::class, 'update'])->name('comment.update');
+    Route::delete('/comment', [CommentController::class, 'delete'])->name('comment.delete');
     
 });
 

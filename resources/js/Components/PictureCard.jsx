@@ -44,7 +44,7 @@ export default function PictureCard({ picture, ownPicture, liked, remove }) {
                                 {likeCount}
                             </button>
                         )}
-                        {true && (
+                        {ownPicture && (
                             <button
                                 onClick={handleDelete}
                                 className="bg-white border border-black text-black"

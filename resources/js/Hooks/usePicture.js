@@ -23,7 +23,7 @@ export default function usePicture(picture, liked){
   };
 
   const deletePicture = () => {
-      axios.delete(route("picture.destroy", { picture_id: id }));
+      axios.delete(route("picture.delete", { picture_id: id }));
   };
 
   return {id, like, likeCount, likePicture, deletePicture}

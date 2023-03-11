@@ -1,6 +1,6 @@
 import DangerButton from "@/Components/DangerButton";
 import { router, useForm } from "@inertiajs/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Comment({ comment, ownComment }) {
     const [editable, setEditable] = useState(false);
@@ -8,6 +8,10 @@ export default function Comment({ comment, ownComment }) {
         comment_text: comment.comment_text,
         id: comment.id,
     });
+
+    useEffect(() => {
+      setData({comment_text: comment.comment_text, id: comment.id})
+    }, [comment])
 
     function editComment(e) {
         e.preventDefault();

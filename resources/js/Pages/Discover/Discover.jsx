@@ -1,58 +1,15 @@
+import usePaginate from "@/Hooks/usePaginate";
+import useSort from "@/Hooks/useSort";
 import GlobalLayout from "@/Layouts/GlobalLayout";
-import { Head, Link, router, usePage, useRemember } from "@inertiajs/react";
-import { useEffect, useState } from "react";
+import { Head } from "@inertiajs/react";
 import PictureCard from "../../Components/PictureCard";
 
 export default function Discover({ auth, errors, picturesPag, morePages }) {
-    const {category, order} = usePage().props
-    const [firstRender, setFirstRender] = useState(true)
-    const [sortOrder, setSortOrder] = useState(order ?? 'desc');
-    const [sortCategory, setSortCategory] = useState(category ?? 'like_count');
-
-    const [processing, setProcessing] = useState(false);
-    const [showMore, setShowMore] = useState(morePages);
-    const [nextUrl, setNextUrl] = useState(picturesPag.next_page_url);
-    const [pictures, setPictures] = useState(picturesPag.data);
-
-    useEffect(() => {
-        console.log(nextUrl);
-    },[])
-    
-    useEffect(() => {
-        if(firstRender) return setFirstRender(false);
-        router.get(route('discover.view', {'sortOrder': sortOrder, 'sortCategory' : sortCategory})), {
-            preserveState: true,
-            preserveScroll: true,
-        }
-    }, [sortOrder, sortCategory])
-
-    useEffect(() => {
-        setProcessing(false);
-    }, [pictures]);
+    const {sortCategory, sortOrder, handleOrder, handleCategory} = useSort()
+    const {pictures, showMore, processing, nextPage, removeImg} = usePaginate(picturesPag, morePages);
 
     const style = {
         gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))",
-    };
-
-    const handleOrder = () => {
-        setSortOrder((prev) => {
-            if (prev == "desc") return "asc";
-            return "desc";
-        });
-    };
-
-    function nextPage() {
-        setProcessing(true);
-        axios.get(nextUrl).then((res) => {
-            setPictures((prev) => [...prev, ...res.data.pictures]);
-            setNextUrl(res.data.next_page_url);
-            setShowMore(res.data.morePages);
-        });
-    }
-
-    const removeImg = (id) => {
-        const newItems = pictures.filter((pic) => pic.id !== id);
-        setPictures(newItems);
     };
 
     return (
@@ -62,7 +19,7 @@ export default function Discover({ auth, errors, picturesPag, morePages }) {
                 <select
                     id="category"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AC3FFF] focus:border-[#AC3FFF] block w-40 p-2.5"
-                    onChange={(e) => setSortCategory(e.target.value)}
+                    onChange={handleCategory}
                     value={sortCategory}
                 >
                     <option value="like_count">Likes</option>

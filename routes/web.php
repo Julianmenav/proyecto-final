@@ -71,6 +71,7 @@ Route::middleware('auth')->group(function () {
 
     // Comments to Pictures
     Route::post('/comment', [CommentController::class, 'save'])->name('comment.save');
+    Route::delete('/comment', [CommentController::class, 'delete'])->name('comment.destroy');
     
 });
 

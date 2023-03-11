@@ -9,7 +9,7 @@ export default function CommentSection({picture}) {
     return (
         <div className="flex flex-col gap-4 w-[700px]">
             {picture.comment.map((comment, idx) => {
-                const ownComment = auth_user.id == comment.user_id
+                const ownComment = auth_user?.id == comment.user_id
                 return <Comment comment={comment} ownComment={ownComment} key={idx} />
             })}
         </div>

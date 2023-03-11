@@ -1,8 +1,11 @@
+import { router, usePage } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 
 
 
 export default function usePicture(picture, liked){
+  const authUser = usePage().props.auth.user;
+
   const [id, setId] = useState(picture.id);
   const [like, setLike] = useState(liked);
   const [likeCount, setLikeCount] = useState(picture.like_count);
@@ -16,6 +19,8 @@ export default function usePicture(picture, liked){
   
 
   const likePicture = (e) => {
+      if(!authUser) return router.get(route('login'))
+
       axios.post(route("picture.like", { picture_id: id }));
 
       like ? setLikeCount(likeCount - 1) : setLikeCount(likeCount + 1);

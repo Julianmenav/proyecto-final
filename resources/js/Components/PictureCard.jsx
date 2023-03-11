@@ -1,9 +1,7 @@
 import usePicture from "@/Hooks/usePicture";
-import { Link, usePage } from "@inertiajs/react";
+import { Link } from "@inertiajs/react";
 
 export default function PictureCard({ picture, ownPicture, liked, remove }) {
-    const authUser = usePage().props.auth.user;
-
     const { id, like, likeCount, likePicture, deletePicture } = usePicture(
         picture,
         liked
@@ -34,16 +32,14 @@ export default function PictureCard({ picture, ownPicture, liked, remove }) {
                     {/* Link href={route('galery)} */}
                     <div className="text-white">{picture.user.name}</div>
                     <div className="flex">
-                        {authUser && (
-                            <button
-                                onClick={likePicture}
-                                className={`${
-                                    like ? "bg-red-400" : "bg-white"
-                                } px-2 text-black`}
-                            >
-                                {likeCount}
-                            </button>
-                        )}
+                        <button
+                            onClick={likePicture}
+                            className={`${
+                                like ? "bg-red-400" : "bg-white"
+                            } px-2 text-black`}
+                        >
+                            {likeCount}
+                        </button>
                         {ownPicture && (
                             <button
                                 onClick={handleDelete}

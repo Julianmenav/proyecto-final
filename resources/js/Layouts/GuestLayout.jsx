@@ -16,7 +16,7 @@ export default function Guest({ children }) {
             ></div>
             <GuestNavbar />
             <div className="w-full m-auto absolute">
-                <div className="w-full m-auto justify-center sm:max-w-md mt-20 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+                <div className="w-full m-auto justify-center sm:max-w-md mt-40 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                     {children}
                 </div>
             </div>

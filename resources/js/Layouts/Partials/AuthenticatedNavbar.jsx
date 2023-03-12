@@ -10,7 +10,7 @@ export default function AuthenticatedNavbar({user}) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
-        <nav className="bg-[#d9d9d9] border-b border-gray-100 h-16 fixed top-0 w-full z-50 shadow-xl">
+        <nav className="bg-gray-100 border-b border-gray-100 h-16 fixed top-0 w-full z-50 shadow-xl">
             <div className="mx-auto px-4 sm:px-6 lg:px-8 h-full">
                 <div className="flex justify-between items-center h-full">
                     <div className="flex h-full">
@@ -129,7 +129,7 @@ export default function AuthenticatedNavbar({user}) {
             <div
                 className={
                     (showingNavigationDropdown ? "block" : "hidden") +
-                    " sm:hidden"
+                    " sm:hidden bg-gray-200 shadow-xl"
                 }
             >
                 <div className="pt-2 pb-3 space-y-1">

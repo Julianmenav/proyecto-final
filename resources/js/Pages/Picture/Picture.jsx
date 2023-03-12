@@ -1,3 +1,4 @@
+import UserNameAndLogo from "@/Components/UserNameAndLogo";
 import usePicture from "@/Hooks/usePicture";
 import GlobalLayout from "@/Layouts/GlobalLayout";
 import { Head } from "@inertiajs/react";
@@ -30,14 +31,7 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
 
             <section className="flex flex-col justify-center items-center h-full text-white">
                 <div className="">
-                    <div className="flex align-center items-center">
-                        {picture.user.name}{" "}
-                        <img
-                            src={picture.user.profile_pic}
-                            alt="profilePic"
-                            className={`w-5 h-5 rounded-full object-cover`}
-                        />
-                    </div>
+                    <UserNameAndLogo user={picture.user} />
                     <img
                         className={`max-w-2xl min-h-[400px]${
                             deleted ? "brightness-50" : ""

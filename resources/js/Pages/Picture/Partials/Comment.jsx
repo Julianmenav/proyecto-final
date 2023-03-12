@@ -54,6 +54,7 @@ export default function Comment({ comment, ownComment }) {
                 {editable ? (
                     <form onSubmit={editComment}>
                         <input
+                            required
                             type="text"
                             value={data.comment_text}
                             onChange={(e) =>

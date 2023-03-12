@@ -1,7 +1,7 @@
 import DangerButton from "@/Components/DangerButton";
 import UserNameAndLogo from "@/Components/UserNameAndLogo";
 import { router, useForm } from "@inertiajs/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function Comment({ comment, ownComment }) {
     const [editable, setEditable] = useState(false);
@@ -9,6 +9,14 @@ export default function Comment({ comment, ownComment }) {
         comment_text: comment.comment_text,
         id: comment.id,
     });
+    const inputRef = useRef(null);
+    
+    useEffect(() => {
+      if (editable) {
+        inputRef.current.focus();
+      }
+    }, [editable]);
+
 
     useEffect(() => {
         setData({ comment_text: comment.comment_text, id: comment.id });
@@ -24,48 +32,71 @@ export default function Comment({ comment, ownComment }) {
 
     function deleteComment() {
         router.delete(route("comment.delete", { id: comment.id }), {
-            preserveState: true,
             preserveScroll: true,
         });
     }
 
+    const handleEdit = () => {
+        setEditable(!editable);
+        document.getElementById("editCommentInput").focus();
+    };
+
     return (
-        <div className="bg-white overflow-hidden w-full rounded-xl shadow-md text-black">
+        <div className="w-full rounded-xl shadow-md font-bold text-white block bg-gray-300/[0.1]">
             <div className="flex items-center justify-between">
-                <UserNameAndLogo user={comment.user} />
-                <div>
+                <div className="flex items-center">
+                    <UserNameAndLogo user={comment.user} />
+                    <div className="text-xs text-gray-500">
+                        {comment.updated_at.split("T")[0]}
+                    </div>
+                </div>
+                <div className="flex gap-2 px-2">
                     {ownComment && (
-                        <button
-                            className="border border-black"
-                            onClick={() => setEditable(!editable)}
-                        >
-                            {editable ? "No Edit" : "Edit"}
-                        </button>
+                        <>
+                            {editable ? (
+                                <div className="px-2 py-1.5 h-full leading-3 0 text-xs rounded-lg text-white font-bold bg-gray-400 transition duration-300 ease-in-out">
+                                    Editando
+                                </div>
+                            ) : (
+                                <button
+                                    className="px-2 py-1.5 bg-gray-500 h-full leading-3 0 text-xs rounded-lg text-white font-bold hover:bg-gray-400 transition duration-300 ease-in-out"
+                                    onClick={handleEdit}
+                                >
+                                    Editar
+                                </button>
+                            )}
+
+                            <button
+                                onClick={deleteComment}
+                                className="px-2 py-1.5 bg-red-500 h-full leading-3 0 text-xs rounded-lg text-white font-bold hover:bg-red-400 transition duration-300 ease-in-out"
+                            >
+                                Borrar
+                            </button>
+                        </>
                     )}
                 </div>
             </div>
-            <div className="h-10 bg-gray-400 p-3">
+            <div className="h-10 px-6 flex items-center">
                 {editable ? (
-                    <form onSubmit={editComment}>
+                    <form
+                        onSubmit={editComment}
+                        className="bg-transparent border-none w-full"
+                    >
                         <input
+                            id="editCommentInput"
                             required
+                            ref={inputRef} 
                             type="text"
                             value={data.comment_text}
+                            className="bg-white/[0.1] w-full rounded-md border-none ring-0 focus:ring-0 m-0 p-0 px-3"
                             onChange={(e) =>
                                 setData("comment_text", e.target.value)
                             }
+                            onBlur={(e) => setEditable(false)}
                         />
                     </form>
                 ) : (
-                    <div onClick={() => setEditable(true)}>
-                        {comment.comment_text}
-                    </div>
-                )}
-            </div>
-            <div className="text-xs bg-gray-800 text-white p-1 flex justify-between">
-                <p>{comment.updated_at.split("T")[0]}</p>
-                {ownComment && (
-                    <DangerButton onClick={deleteComment}>Borrar</DangerButton>
+                    <div>{comment.comment_text}</div>
                 )}
             </div>
         </div>

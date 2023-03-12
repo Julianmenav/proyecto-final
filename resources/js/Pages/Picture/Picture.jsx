@@ -7,7 +7,10 @@ import CommentBox from "./Partials/CommentBox";
 import CommentSection from "./Partials/CommentSection";
 
 export default function Picture({ picture, auth, errors, liked, ownPicture }) {
-    const { id, like, likeCount, likePicture, deletePicture } = usePicture(picture,liked);
+    const { id, like, likeCount, likePicture, deletePicture } = usePicture(
+        picture,
+        liked
+    );
     const [deleted, setDeleted] = useState(false);
 
     function handleLike(e) {
@@ -29,42 +32,69 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
         <GlobalLayout auth={auth} errors={errors}>
             <Head title={`Obra de ${picture.user.name}`} />
 
-            <section className="flex flex-col justify-center items-center h-full text-white">
-                <div className="">
+            <section className="flex flex-col justify-around items-center 2xl:flex-row 2xl:items-start h-full text-white">
+                <div className="max-w-2xl">
                     <UserNameAndLogo user={picture.user} />
-                    <img
-                        className={`max-w-2xl min-h-[400px]${
-                            deleted ? "brightness-50" : ""
-                        }`}
-                        src={picture.image_url}
-                        alt=""
-                    />
                     <div>
-                        {picture.description}
+                        <img
+                            className={
+                                (deleted ? "brightness-20 " : " ") + "max-h-[600px]"
+                            }
+                            src={picture.image_url}
+                            alt="image"
+                        />
+                        <p className="font-bold">{picture.description}</p>
                     </div>
-                    <div>
-                        <button
-                            onClick={handleLike}
-                            className={`${
-                                like ? "bg-red-400" : "bg-white"
-                            } px-2 text-black`}
-                        >
+                    <div className="flex items-center">
+                        <div className="flex font-extrabold text-lg text-gray-50 justify-center items-center gap-1">
+                            <button onClick={likePicture}>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill={like ? "#AC3FFF" : "none"}
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="#AC3FFF"
+                                    className={
+                                        like
+                                            ? "h-6 w-6"
+                                            : "h-6 w-6 hover:fill-[#AC3FFF] hover:opacity-50"
+                                    }
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                                    />
+                                </svg>
+                            </button>
                             {likeCount}
-                        </button>
+                        </div>
+
                         {ownPicture && (
                             <button
                                 onClick={handleDelete}
-                                className="bg-white border border-black text-black"
+                                className=" p-1 m-3  text-gray-100 bg-gray-500 opacity-70 text-sm font-bold flex items-center rounded-md shadow-md hover:bg-red-500 hover:opacity-100 active:translate-y-0.5"
                             >
-                                borrar
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor"
+                                    className="text-gray-100 w-6 h-6"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path>
+                                    <path d="M9 10h2v8H9zm4 0h2v8h-2z"></path>
+                                </svg>
                             </button>
                         )}
                     </div>
                 </div>
-
-                <CommentBox picture_id={id}/>
-
-                <CommentSection picture={picture} />
+                <div className="mt-8 min-w-[500px] flex flex-col ">
+                    <div className="flex items-center pb-2  ">
+                        <div className="text-white text-2xl ">Comentarios</div>
+                    </div>
+                    <CommentSection picture={picture} />
+                    <CommentBox picture_id={id} />
+                </div>
             </section>
         </GlobalLayout>
     );

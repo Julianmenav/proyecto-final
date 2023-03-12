@@ -57,7 +57,6 @@ export default function PictureCard({ picture, ownPicture, liked, remove }) {
                     </Link>
                 </div>
                 <div
-                    id="comment, me gusta "
                     className="w-full p-1 flex justify-end"
                 >
                     <div className="flex font-extrabold text-lg text-gray-50 justify-center items-center gap-1">

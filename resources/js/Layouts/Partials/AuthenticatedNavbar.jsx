@@ -10,15 +10,13 @@ export default function AuthenticatedNavbar({user}) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
-        <nav className="bg-[#d9d9d9] border-b border-gray-100">
-            <div className="mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-16">
-                    <div className="flex">
-                        <div className="shrink-0 flex items-center">
-                            <Link href="/">
-                                <ApplicationLogo className="h-5" />
-                            </Link>
-                        </div>
+        <nav className="bg-[#d9d9d9] border-b border-gray-100 h-16 fixed top-0 w-full z-50 shadow-xl">
+            <div className="mx-auto px-4 sm:px-6 lg:px-8 h-full">
+                <div className="flex justify-between items-center h-full">
+                    <div className="flex h-full">
+                        <Link href="/" className="h-full flex items-center">
+                            <ApplicationLogo className="h-5" />
+                        </Link>
 
                         <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                             <NavLink

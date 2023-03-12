@@ -5,21 +5,22 @@ import { Link } from '@inertiajs/react';
 export default function GuestNavbar() {
 
     return (
-        <nav className="bg-[#d9d9d9] border-b border-gray-100">
-            <div className="mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-16">
-                    <div className="flex">
-                        <div className="shrink-0 flex items-center">
-                            <Link href="/">
-                                <ApplicationLogo className="h-5" />
-                            </Link>
-                        </div>
+        <nav className="bg-[#d9d9d9] border-b border-gray-100 h-16 fixed top-0 w-full z-50 shadow-xl">
+            <div className="mx-auto px-4 sm:px-6 lg:px-8 h-full">
+                <div className="flex justify-between items-center h-full">
+                    <div className="flex h-full">
+                        <Link href="/" className="h-full flex items-center">
+                            <ApplicationLogo className="h-5" />
+                        </Link>
                     </div>
 
                     <div className="flex items-center ml-6">
-                        <Link href={route('login')} className="text-sm text-gray-700 dark:text-gray-500 underline">
+                        <Link href={route('login')}
+                            type="button"
+                            className="bg-[#AC3FFF] inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 rounded-md font-bold text-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                        >
                             Log in
-                        </Link>
+                        </Link>                        
                     </div>
                 </div>
             </div>

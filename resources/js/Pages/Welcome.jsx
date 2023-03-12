@@ -11,7 +11,7 @@ export default function Welcome(props) {
             errors={props.errors}
         >
             <Head title="Welcome"/>
-            <div className='flex mt-12 px-12 justify-around text-white'>
+            <div className='flex px-12 justify-around text-white'>
                 <div>
                     <div className='max-w-2xl text-7xl'>
                         La nueva forma de hacer arte.

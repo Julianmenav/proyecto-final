@@ -1,4 +1,6 @@
 import PictureCard from "@/Components/PictureCard";
+import PictureGrid from "@/Components/PictureGrid";
+import PrimaryLink from "@/Components/PrimaryLink";
 import ShowMoreButton from "@/Components/ShowMoreButton";
 import SortMenu from "@/Components/SortMenu";
 import usePaginate from "@/Hooks/usePaginate";
@@ -8,66 +10,37 @@ import { Head, Link } from "@inertiajs/react";
 
 export default function Dashboard({ auth, errors, picturesPag, morePages }) {
     const { sortCategory, sortOrder, handleOrder, handleCategory } = useSort();
-    const { pictures, showMore, processing, nextPage, removeImg } = usePaginate(
-        picturesPag,
-        morePages
-    );
-    const style = {
-        gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))",
-    };
+    const { pictures, showMore, processing, nextPage, removeImg } = usePaginate(picturesPag, morePages);
+
 
     return (
         <GlobalLayout auth={auth} errors={errors}>
             <Head title="Dashboard" />
 
-            <section className="text-white">
-                <div className="mx-10 text-4xl">Tus creaciones</div>
+            <section className="">
+                <div className="flex items-center pb-2 mx-5 md:mx-10 border-b border-[#AC3FFF]/[0.8]">
+                    <div className="text-white text-2xl ">Imagenes creadas</div>
+                </div>
 
-                {pictures.length == 0 ? (
-                    <>
-                        <div className="text-white text-xl">
-                            Aún no has creado ninguna imagen.
-                        </div>
-                        <Link
-                            href={route("create.view")}
-                            className="py-2 px-6 rounded-full bg-white text-black font-bold"
-                        >
-                            Comienza a crear
-                        </Link>
-                    </>
-                ) : (
-                    <SortMenu
-                        sortCategory={sortCategory}
-                        sortOrder={sortOrder}
-                        handleOrder={handleOrder}
-                        handleCategory={handleCategory}
-                    />
-                )}
-                <div className="grid gap-4 mt-12 sm:px-20 " style={style}>
-                    {pictures.map((picture, idx) => {
-                        const ownPicture = picture.user_id == auth.user?.id;
-                        const liked = picture.like
-                            .map((el) => el.id)
-                            .includes(auth.user?.id);
-
-                        return (
-                            <PictureCard
-                                picture={picture}
-                                liked={liked}
-                                ownPicture={ownPicture}
-                                remove={removeImg}
-                                key={idx}
-                            />
-                        );
-                    })}
+                <div id='content' className="mx-2 sm:mx-8 md:mx-16 lg:mx-28 mt-8 ">
+                    {pictures.length == 0 ? (
+                        <>
+                            <div className="text-white text-xl text-bold">
+                                Aún no has creado ninguna imagen.
+                            </div>
+                            <div className="flex justify-center">
+                                <PrimaryLink text="Comienza a crear" href={route('create.view')} className="bg-gray-100 text-black hover:bg-gray-200"></PrimaryLink>
+                            </div>
+                        </>
+                    ):(
+                        <>
+                                <SortMenu sortCategory={sortCategory} sortOrder={sortOrder} handleOrder={handleOrder} handleCategory={handleCategory}/>
+                                <PictureGrid pictures={pictures} removeImg={removeImg} auth={auth}/>
+                            <ShowMoreButton className='w-full flex justify-center my-10 2xl:my-5' nextPage={nextPage} showMore={showMore} processing={processing}/>
+                        </>
+                    )}
                 </div>
             </section>
-
-            <ShowMoreButton
-                nextPage={nextPage}
-                showMore={showMore}
-                processing={processing}
-            />
         </GlobalLayout>
     );
 }

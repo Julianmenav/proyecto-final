@@ -21,7 +21,7 @@ export default function GlobalLayout({ auth, children }) {
             ) : (
                 <GuestNavbar />
             )}
-            <main className="mt-20 absolute w-full">{children}</main>
+            <main className="mt-20 absolute w-full z-0">{children}</main>
         </div>
     );
 }

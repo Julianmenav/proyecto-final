@@ -1,3 +1,4 @@
+import PrimaryLink from '@/Components/PrimaryLink';
 import GlobalLayout from '@/Layouts/GlobalLayout';
 import { Head, Link } from '@inertiajs/react';
 
@@ -25,12 +26,8 @@ export default function Welcome(props) {
                 <div className='text-xl max-w-xl mt-12'>
                     <p>Experimenta las tecnologías del futuro hoy mismo. Ten al alcance de tu mano la posibilidad de crear arte de una forma nunca antes vista.</p>
                     <div className='flex justify-between mt-8 mx-10'>
-                        <Link href={route('create.view')} className='py-2 px-6 rounded-full bg-white text-black font-bold' >
-                            Comienza a crear
-                        </Link>
-                        <Link href={route('discover.view')} className='py-2 px-6 rounded-full bg-[#240E4D] border border-[#AC3FFF] font-bold' >
-                            Descubre mas
-                        </Link>
+                        <PrimaryLink text="Comienza a crear" href={route('create.view')} className="bg-gray-100 text-black hover:bg-gray-300"></PrimaryLink>
+                        <PrimaryLink text="Descubre más" href={route('discover.view')} className="bg-[#240E4D] border border-[#AC3FFF] hover:bg-[#361a6b]"></PrimaryLink>
                     </div>
                 </div>
             </div>

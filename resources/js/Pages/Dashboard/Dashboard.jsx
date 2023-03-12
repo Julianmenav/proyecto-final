@@ -19,7 +19,7 @@ export default function Dashboard({ auth, errors, picturesPag, morePages }) {
 
             <section className="">
                 <div className="flex items-center pb-2 mx-5 md:mx-10 border-b border-[#AC3FFF]/[0.8]">
-                    <div className="text-white text-2xl ">Imagenes creadas</div>
+                    <div className="text-white text-2xl ">Imágenes creadas</div>
                 </div>
 
                 <div id='content' className="mx-2 sm:mx-8 md:mx-16 lg:mx-28 mt-8 ">

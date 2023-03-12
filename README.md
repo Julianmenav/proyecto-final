@@ -1,66 +1,51 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Proyecto Laravel DWES - Dreative
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Esta será una aplicacion que usara una API de alguna IA para crear imagenes escribiendo una descripcion, y poder compartir las mismas.
 
-## About Laravel
+Por ahora en lugar de crear las imágenes de esta manera, las imágenes serán subidas por el usuario y Laravel las guardará en el servidor.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Por ahora y para este proyecto, la aplicación contará con un CRUD para las imágenes y otro para los comentarios que se pueden escribir en las mismas.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Instalación 
+Dependencias:
+```
+composer install
+npm install
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Crear y poblar base de datos:
+```
+php artisan migrate --seed
+```
+El perfil creado para el profesor es el siguiente:
+```
+email: admin@admin.com
+pass:  admin123
+```
 
-## Learning Laravel
+## Explicación de las funcionalidades
+La primera vez que un usuario accede a la aplicacion, se encuentra con una imagen de ejemplo, que sera la ultima imagen creada por un usuario, y 2 opaciones clicables:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+La primera opcion es para "Comenzar a crear" la cual le rederigirá al login, a no ser que el usuario ya esté logeado, entonces le redirigirá a la vista para crear las imágenes (Subir archivos).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+La otra opción le permite seguir mirándo imágenes creadas por los usuarios, en otra vista nueva:
+# Discover
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<img src="https://raw.githubusercontent.com/Julianmenav/stuff/main/laravelProject/discover.png" alt="Discover" width="600">
 
-## Laravel Sponsors
+En esta vista podra ordenar las fotos de varias maneras , y si el usuario intenta dar megusta se le pedirá acceder a la aplicación o registrarse.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+# Create
+<img src="https://raw.githubusercontent.com/Julianmenav/stuff/main/laravelProject/create.png" alt="Create" width="600">
 
-### Premium Partners
+En la vista de create, hay que hacer click en el espacio reservado para ello y podremos importar una imágen. (Aún no he implementado el drag and drop)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+# Dashboard
+<img src="https://raw.githubusercontent.com/Julianmenav/stuff/main/laravelProject/dashboard.png" alt="Dashboard" width="600">
 
-## Contributing
+El dashboard es la primera página a la que accedemos cuando nos logeamos y desde aqui podremos ver nuestras imágenes. Todas las imágenes que sean nuestras tanto en la vista Discover como en ésta aparecerán con un botón de borrado.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Picture/{id}
+<img src="https://raw.githubusercontent.com/Julianmenav/stuff/main/laravelProject/picture2.png" alt="Picture" width="600">
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Si hacemos click en una foto podremos verla en mayor resolución, escribir o ver los comentarios de la misma.

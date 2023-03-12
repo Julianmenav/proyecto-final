@@ -19,7 +19,7 @@ export default function Welcome(props) {
                     </div>
                     <p></p>
                     <div>
-                        <img src={src} alt="ultimaImagenCreada" className='pt-3 max-w-[500px]'/>
+                        <img src={src} alt="ultimaImagenCreada" className='pt-3 max-w-[800px] max-h-[600px]'/>
                         <p className='text-sm mt-0.5'>Imagen creada por {name}</p>
                     </div>
                 </div>

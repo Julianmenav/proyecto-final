@@ -2,7 +2,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import { Link } from '@inertiajs/react';
 
 
-export default function GuestNavbar() {
+export default function GuestNavbar({onAuthPage}) {
 
     return (
         <nav className="bg-[#d9d9d9] border-b border-gray-100 h-16 fixed top-0 w-full z-50 shadow-xl">
@@ -15,12 +15,12 @@ export default function GuestNavbar() {
                     </div>
 
                     <div className="flex items-center ml-6">
-                        <Link href={route('login')}
+                        {!onAuthPage && (<Link href={route('login')}
                             type="button"
                             className="bg-[#AC3FFF] inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 rounded-md font-bold text-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                         >
                             Log in
-                        </Link>                        
+                        </Link>)}                      
                     </div>
                 </div>
             </div>

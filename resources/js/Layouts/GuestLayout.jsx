@@ -14,7 +14,7 @@ export default function Guest({ children }) {
                         "radial-gradient(ellipse at bottom right, rgba(172,63,255,0.2) 0%, rgba(255,255,255,0) 50%) no-repeat",
                 }}
             ></div>
-            <GuestNavbar />
+            <GuestNavbar onAuthPage={true}/>
             <div className="w-full m-auto absolute">
                 <div className="w-full m-auto justify-center sm:max-w-md mt-40 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                     {children}

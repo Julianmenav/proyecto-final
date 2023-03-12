@@ -45,7 +45,7 @@ export default function Login({ status, canResetPassword }) {
                         type="email"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full focus:ring-[#AC3FFF]"
                         autoComplete="username"
                         isFocused={true}
                         handleChange={onHandleChange}
@@ -62,22 +62,22 @@ export default function Login({ status, canResetPassword }) {
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full focus:ring-[#AC3FFF]"
                         autoComplete="current-password"
                         handleChange={onHandleChange}
                     />
 
-                    <InputError message={errors.password} className="mt-2" />
+                    <InputError message={errors.password} className="mt-2 " />
                 </div>
 
                 <div className="mt-4 flex justify-between">
-                    <label className="flex items-center">
+                    <label className="flex items-center ">
                         <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
-                        <span className="ml-2 text-sm text-gray-600">Remember me</span>
+                        <span className="ml-2 text-sm text-gray-600 ">Remember me</span>
                     </label>
                     <Link
                             href={route('register')}
-                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#AC3FFF] "
                         >
                             Sign in
                     </Link>
@@ -87,13 +87,13 @@ export default function Login({ status, canResetPassword }) {
                     {canResetPassword && (
                         <Link
                             href={route('password.request')}
-                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outl`ine-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outl`ine-none focus:ring-2 focus:ring-offset-2 focus:ring-[#AC3FFF] "
                         >
                             Forgot your password?
                         </Link>
                     )}
 
-                    <PrimaryButton className="ml-4" processing={processing}>
+                    <PrimaryButton className="bg-[#AC3FFF] font-bold ml-4 hover:bg-[#b350ff] hover:text-gray-700" processing={processing}>
                         Log in
                     </PrimaryButton>
                 </div>

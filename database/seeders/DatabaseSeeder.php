@@ -17,13 +17,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(20)->create();
+        User::factory(15)->create();
+        User::create([
+            'name' => 'bilbobolson',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('admin123')
+        
+        ]);
         Picture::factory(30)->create();
         Comment::factory(60)->create();
-
+        
         $users = User::all();
         $pictures = Picture::all();
-        
+
         foreach($users as $user){
             foreach($pictures as $picture){
                 if (rand(0,1) == 1){

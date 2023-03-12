@@ -15,7 +15,7 @@ export default function SortMenu({handleCategory, sortCategory, handleOrder, sor
             </select>
             <button
                 onClick={handleOrder}
-                className="ml-2  px-4 bg-[#AC3FFF] h-full leading-3 0 text-sm rounded-lg text-white font-bold focus:ring-[#AC3FFF] focus:border-[#AC3FFF] hover:bg-[#bb63ff] transition duration-300 ease-in-out"
+                className="ml-2  px-4 bg-[#AC3FFF] h-full leading-3 0 text-sm rounded-lg text-white font-bold hover:bg-[#bb63ff] transition duration-300 ease-in-out"
             >
                 {sortOrder == "desc" ? "descend." : "ascend."}
             </button>

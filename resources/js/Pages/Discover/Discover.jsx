@@ -20,7 +20,7 @@ export default function Discover({ auth, errors, picturesPag, morePages }) {
                 <SortMenu sortCategory={sortCategory} sortOrder={sortOrder} handleOrder={handleOrder} handleCategory={handleCategory}/>
                 <PictureGrid pictures={pictures} removeImg={removeImg} auth={auth}/>
             </div>
-            <ShowMoreButton className='w-full flex justify-center my-10' nextPage={nextPage} showMore={showMore} processing={processing}/>
+            <ShowMoreButton className='w-full flex justify-center my-10 2xl:my-5' nextPage={nextPage} showMore={showMore} processing={processing}/>
         </GlobalLayout>
     );
 }

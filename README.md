@@ -1,51 +1,47 @@
-# Proyecto Laravel DWES - Dreative
+# Dreative - Anteproyecto
 
-Esta será una aplicacion que usara una API de alguna IA para crear imagenes escribiendo una descripcion, y poder compartir las mismas.
+## Temática 💡
 
-Por ahora en lugar de crear las imágenes de esta manera, las imágenes serán subidas por el usuario y Laravel las guardará en el servidor.
+Esta será una aplicacion que usará la API de openAI para crear imagenes a traves de inteligencia artificial a partir de una descripción aportada por el usuario. Las imágenes se guardarán y podrán ser vistas por el resto de usuarios. 
 
-Por ahora y para este proyecto, la aplicación contará con un CRUD para las imágenes y otro para los comentarios que se pueden escribir en las mismas.
+## Funciones 🚀
 
-## Instalación 
-Dependencias:
-```
-composer install
-npm install
-```
+**Main Page**: Podremos ver un ejemplo de una imagen creada por un usuario a modo de ejemplo, y se invitará al usuario a formar parte de la comunidad creando una imagen.
 
-Crear y poblar base de datos:
-```
-php artisan migrate --seed
-```
-El perfil creado para el profesor es el siguiente:
-```
-email: admin@admin.com
-pass:  admin123
-```
+**Creador de Imágenes**: En esta página se podrá escribir una descripción de la imagen deseada (Prompt) y ésta empezará a ser generada, una vez completada la carga el usuario podrá decidir si quedarse con ella y publicarla.
 
-## Explicación de las funcionalidades
-La primera vez que un usuario accede a la aplicacion, se encuentra con una imagen de ejemplo, que sera la ultima imagen creada por un usuario, y 2 opaciones clicables:
+**Descubrir imágenes**: Una página para ver otras imágenes creadas por otros usuarios, ya sean las últimas subidas, o las más populares.
 
-La primera opcion es para "Comenzar a crear" la cual le rederigirá al login, a no ser que el usuario ya esté logeado, entonces le redirigirá a la vista para crear las imágenes (Subir archivos).
+**Imagen y comentarios**: Además de tener un contador de los "me gusta" otorgados por los usuarios, cada imagen también podrá contar con comentarios los cuales se verán desde una página dedicada a cada obra. La finalidad de esta página será también poder ver la imágen en una mayor resolución.
 
-La otra opción le permite seguir mirándo imágenes creadas por los usuarios, en otra vista nueva:
-# Discover
+**Perfil**: En el perfil de un usuario se pueden ver tanto sus obras creadas, así como sus obras favoritas. Un usuario también puede guardar imágenes sin que esta información sea pública, y también aparecerán en el perfil pero solo para el usuario autenticado.
 
-<img src="https://raw.githubusercontent.com/Julianmenav/stuff/main/laravelProject/discover.png" alt="Discover" width="600">
+## Tecnologías 💻
 
-En esta vista podra ordenar las fotos de varias maneras , y si el usuario intenta dar megusta se le pedirá acceder a la aplicación o registrarse.
+### Frontend ⚛️
 
-# Create
-<img src="https://raw.githubusercontent.com/Julianmenav/stuff/main/laravelProject/create.png" alt="Create" width="600">
+La tecnología para hacer la interfaz de usuario será React (javascript), apoyado en Tailwind como framework de css para los estilos.
 
-En la vista de create, hay que hacer click en el espacio reservado para ello y podremos importar una imágen. (Aún no he implementado el drag and drop)
+### Backend 📡
 
-# Dashboard
-<img src="https://raw.githubusercontent.com/Julianmenav/stuff/main/laravelProject/dashboard.png" alt="Dashboard" width="600">
+El lado del servidor se apoyará en Laravel (PHP) 
 
-El dashboard es la primera página a la que accedemos cuando nos logeamos y desde aqui podremos ver nuestras imágenes. Todas las imágenes que sean nuestras tanto en la vista Discover como en ésta aparecerán con un botón de borrado.
+### Otros 🛠️
 
-# Picture/{id}
-<img src="https://raw.githubusercontent.com/Julianmenav/stuff/main/laravelProject/picture2.png" alt="Picture" width="600">
+Base de Datos principal: MySQL 
 
-Si hacemos click en una foto podremos verla en mayor resolución, escribir o ver los comentarios de la misma.
+Base de Datos y Host para almacenar imágenes: Firebase
+
+Organización de tareas: Notion
+
+Control de versiones: Git
+
+## Base de Datos 💾
+
+<img src="https://github.com/Julianmenav/stuff/blob/main/laravelProject/diagrama_bbdd.png?raw=true">
+
+
+
+## Boceto de Diseño ✏️
+
+[Pre-mockup en Figma](https://www.figma.com/file/G5RZLgNNFuACQYsCFq4hgZ/01-Desktop%26Mobile-JulianMena?node-id=0%3A1&t=gk5DSPZuXSesguvR-1)

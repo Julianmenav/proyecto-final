@@ -4,7 +4,7 @@ import GuestNavbar from "./Partials/GuestNavbar";
 
 export default function GlobalLayout({ auth, children }) {
     return (
-        <div className="">
+        <div className="overflow-x-hidden">
             <div
                 className="min-h-screen w-screen bg-[#242424] fixed top-0 left-0"
                 style={{ backgroundImage: 'url("/assets/dotGrid.svg")' }}
@@ -21,7 +21,7 @@ export default function GlobalLayout({ auth, children }) {
             ) : (
                 <GuestNavbar />
             )}
-            <main className="mt-20 absolute w-full z-0">{children}</main>
+            <main className="mt-20 absolute w-screen z-0">{children}</main>
         </div>
     );
 }

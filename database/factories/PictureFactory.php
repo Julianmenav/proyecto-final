@@ -17,9 +17,18 @@ class PictureFactory extends Factory
      */
     public function definition()
     {
+
+        $random_number = rand(1, 20);
+        $image_url = "https://raw.githubusercontent.com/Julianmenav/stuff/main/daw/slideshow/{$random_number}.jpeg";
+        
+        // 30% of img will be from faker
+        if(rand(1,10) > 7){
+            $image_url = fake()->imageUrl(800, 500, 'img', true);
+        }
+
         return [
             'description' => fake()->sentence(),
-            'image_url' => fake()->imageUrl(800, 500, 'img', true),
+            'image_url' => $image_url,
             'user_id' => User::all()->random()->id()
         ];
     }

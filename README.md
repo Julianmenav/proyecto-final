@@ -1,4 +1,12 @@
-# Dreative - Anteproyecto
+# Dreative 
+
+# Indice
+
+- Descripción del proyecto
+- Historial de cambios
+- Bibliografía
+
+# Descripcion del proyecto
 
 ## Temática 💡
 
@@ -45,3 +53,36 @@ Control de versiones: Git
 ## Boceto de Diseño ✏️
 
 [Pre-mockup en Figma](https://www.figma.com/file/G5RZLgNNFuACQYsCFq4hgZ/01-Desktop%26Mobile-JulianMena?node-id=0%3A1&t=gk5DSPZuXSesguvR-1)
+
+# Historial de cambios
+
+- [X] Migracion BBDD
+- [X] Modelos
+- [X] Factorías para llenar BBDD con fake data
+- [X] PAGE: Homepage
+- [X] PAGE: Discover (galeria imagenes de los usuarios)
+- [X] Custom hook para manejar like a fotos
+- [X] Pagination para página de discover (Infinite scroll)
+- [X] PAGE: Creador de imagenes (UPLOAD IMAGE POR AHORA)
+- [X] PAGE: User Dashboard 
+- [X] PAGE: Pagina dedicada a una sola imagen (/picture/{picture_id})
+- [X] Comments
+- [ ] Diseño y desarrollo de las vistas de autenticacion (Login, register, forgot pswd...)
+- [ ] Modificar paginacion para funcionar con scroll
+- [ ] Implementar OPENAI API para crear imagenes
+- [ ] PAGE: Galeria de cada usuario (/user/{user_id})
+- [ ] Añadir apartado de imagenes guardadas a (Dashboard/Galery pages)
+- [ ] User profile
+- [ ] Admin page
+
+# Bibliografía
+
+[Documentación de Laravel](https://laravel.com/docs/9.x)
+
+[Documentación de Inertia](https://inertiajs.com/)
+
+[Documentación de React](https://react.dev/)
+
+[Documentación de la API de OpenAI](https://platform.openai.com/docs/guides/images)
+
+[Cliente de OpenAI para PHP](https://github.com/openai-php/client#images-resource)

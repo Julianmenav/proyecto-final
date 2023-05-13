@@ -69,11 +69,14 @@ Control de versiones: Git
 - [X] Comments
 - [ ] Diseño y desarrollo de las vistas de autenticacion (Login, register, forgot pswd...)
 - [ ] Modificar paginacion para funcionar con scroll
-- [ ] Implementar OPENAI API para crear imagenes
+- [X] Implementar OPENAI API para crear imagenes
+- [ ] Store in Firebase
+- [ ] Error Handler Create page
 - [ ] PAGE: Galeria de cada usuario (/user/{user_id})
 - [ ] Añadir apartado de imagenes guardadas a (Dashboard/Galery pages)
 - [ ] User profile
 - [ ] Admin page
+- [ ] Not Found Pages
 
 # Bibliografía
 
@@ -86,3 +89,7 @@ Control de versiones: Git
 [Documentación de la API de OpenAI](https://platform.openai.com/docs/guides/images)
 
 [Cliente de OpenAI para PHP](https://github.com/openai-php/client#images-resource)
+
+# Video checkpoint
+
+[Click para ver video en youtube](https://youtu.be/MhpPijsZVeM)

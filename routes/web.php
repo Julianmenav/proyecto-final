@@ -5,6 +5,7 @@ use App\Http\Controllers\CreateController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\DiscoverController;
+use App\Http\Controllers\OpenAIController;
 use App\Http\Controllers\PictureController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
@@ -56,7 +57,7 @@ Route::middleware('auth')->group(function () {
     
     // Create Page
     Route::get('/create', [CreateController::class, 'view'])->name('create.view');
-    Route::post('/create', [CreateController::class, 'save'])->name('create.save');
+    Route::post('/create', [CreateController::class, 'generateImage'])->name('create.generate');
     
     // Dashboard Page
     Route::get('/dashboard', [DashboardController::class, 'view'])->name('dashboard.view');
@@ -69,7 +70,7 @@ Route::middleware('auth')->group(function () {
     // Likes to Pictures
     Route::post('/picture', [PictureController::class, 'like'])->name('picture.like');
     Route::delete('/picture', [PictureController::class, 'delete'])->name('picture.delete');
-
+    
     // Comments to Pictures
     Route::post('/comment', [CommentController::class, 'save'])->name('comment.save');
     Route::put('/comment', [CommentController::class, 'update'])->name('comment.update');

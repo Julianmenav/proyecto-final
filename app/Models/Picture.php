@@ -28,6 +28,10 @@ class Picture extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function savedItems() {
+        return $this->hasMany(Saved::class);
+    }
+
     public function like() {
         // En el caso de que asumamos una segunda relacion entre user y picture,
         //  creo que habría que borrar el modelo Likes ya que la tabla es pivot.

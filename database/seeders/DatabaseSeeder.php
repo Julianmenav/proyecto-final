@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use \App\Models\User;
 use \App\Models\Picture;
 use \App\Models\Comment;
+use \App\Models\Saved;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -34,6 +35,19 @@ class DatabaseSeeder extends Seeder
             foreach($pictures as $picture){
                 if (rand(0,1) == 1){
                     $user->like()->attach($picture);
+                }
+            }
+        }
+
+        foreach($users as $user){
+            foreach($pictures as $picture){
+                if (rand(0,1) == 1){
+                    Saved::create([
+                        'user_id' => $user->id,
+                        'picture_id' => $picture->id,
+                        'saved_group' => 'FAVORITE'
+                    
+                    ]);
                 }
             }
         }

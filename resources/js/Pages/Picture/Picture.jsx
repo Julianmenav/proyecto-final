@@ -1,7 +1,7 @@
 import UserNameAndLogo from "@/Components/UserNameAndLogo";
 import usePicture from "@/Hooks/usePicture";
 import GlobalLayout from "@/Layouts/GlobalLayout";
-import { Head } from "@inertiajs/react";
+import { Head, router } from "@inertiajs/react";
 import React, { useEffect, useState } from "react";
 import CommentBox from "./Partials/CommentBox";
 import CommentSection from "./Partials/CommentSection";
@@ -11,7 +11,7 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
         picture,
         liked
     );
-    const [deleted, setDeleted] = useState(false);
+    const [deleted, setDeleted] = useState(false)
 
     function handleLike(e) {
         if (deleted) return;
@@ -26,6 +26,7 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
 
         deletePicture();
         setDeleted(true);
+        router.visit(route('dashboard.view'))
     }
 
     return (
@@ -37,9 +38,7 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
                     <UserNameAndLogo user={picture.user} />
                     <div>
                         <img
-                            className={
-                                (deleted ? "brightness-20 " : " ") + "max-h-[600px]"
-                            }
+                            className="max-h-[600px]"
                             src={picture.image_url}
                             alt="image"
                         />
@@ -47,7 +46,7 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
                     </div>
                     <div className="flex items-center">
                         <div className="flex font-extrabold text-lg text-gray-50 justify-center items-center gap-1">
-                            <button onClick={likePicture}>
+                            <button onClick={handleLike}>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill={like ? "#AC3FFF" : "none"}

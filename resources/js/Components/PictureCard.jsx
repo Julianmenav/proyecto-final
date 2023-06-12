@@ -24,7 +24,7 @@ export default function PictureCard({ picture, ownPicture, liked, remove }) {
                         })}
                     >
                         <img
-                            className="transform-gpu min-w-full aspect-auto"
+                            className="transform-gpu min-w-full aspect-auto -mt-14"
                             src={picture.image_url}
                             alt="imagenCreadaPorUsuario"
                         />

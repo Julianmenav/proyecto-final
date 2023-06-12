@@ -1,6 +1,7 @@
 import PictureCard from "@/Components/PictureCard";
 import PictureGrid from "@/Components/PictureGrid";
 import PrimaryLink from "@/Components/PrimaryLink";
+import SectionTitle from "@/Components/SectionTitle";
 import ShowMoreButton from "@/Components/ShowMoreButton";
 import SortMenu from "@/Components/SortMenu";
 import usePaginate from "@/Hooks/usePaginate";
@@ -18,9 +19,7 @@ export default function Dashboard({ auth, errors, picturesPag, morePages }) {
             <Head title="Dashboard" />
 
             <section className="">
-                <div className="flex items-center pb-2 mx-5 md:mx-10 border-b border-[#AC3FFF]/[0.8]">
-                    <div className="text-white text-2xl ">Imágenes creadas</div>
-                </div>
+                <SectionTitle >Imagenes creadas</SectionTitle>
 
                 <div id='content' className="mx-2 sm:mx-8 md:mx-16 lg:mx-28 mt-8 ">
                     {pictures.length == 0 ? (
@@ -34,8 +33,8 @@ export default function Dashboard({ auth, errors, picturesPag, morePages }) {
                         </>
                     ):(
                         <>
-                                <SortMenu sortCategory={sortCategory} sortOrder={sortOrder} handleOrder={handleOrder} handleCategory={handleCategory}/>
-                                <PictureGrid pictures={pictures} removeImg={removeImg} auth={auth}/>
+                            <SortMenu sortCategory={sortCategory} sortOrder={sortOrder} handleOrder={handleOrder} handleCategory={handleCategory}/>
+                            <PictureGrid pictures={pictures} removeImg={removeImg} auth={auth}/>
                             <ShowMoreButton className='w-full flex justify-center my-10 2xl:my-5' nextPage={nextPage} showMore={showMore} processing={processing}/>
                         </>
                     )}

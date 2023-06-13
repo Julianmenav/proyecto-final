@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Picture;
+use App\Models\Saved;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
-    const COUNT = 9;
+    const COUNT = 6;
 
     public function view(Request $request) {
         $sortCategory = $request->sortCategory ?: 'created_at';
@@ -29,7 +30,17 @@ class DashboardController extends Controller
         $morePages = $paginator->hasMorePages();
         
         if($paginator->onFirstPage()){
-            return Inertia::render('Dashboard/Dashboard', ['picturesPag' => $paginator, 'morePages' => $morePages, 'order' => $sortOrder, 'category' => $sortCategory, 'search' => $search]);
+
+            // Get user info
+            
+            $user_pictures = User::find($auth_id)->picture()->withCount('like');
+            $num_pictures_created = $user_pictures->count();
+            $num_likes = $user_pictures->get()->sum('like_count');
+            $num_saved_pictures = Saved::where('user_id', $auth_id)->count();
+            
+            $user_stats = ['numPicturesCreated'=>$num_pictures_created, 'numLikes'=> $num_likes, 'numSavedPictures' => $num_saved_pictures];
+
+            return Inertia::render('Dashboard/Dashboard', ['userStats' => $user_stats, 'picturesPag' => $paginator, 'morePages' => $morePages, 'order' => $sortOrder, 'category' => $sortCategory, 'search' => $search]);
         }
         
         $nextPage = $paginator->nextPageUrl();

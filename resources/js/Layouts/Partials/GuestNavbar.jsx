@@ -5,7 +5,7 @@ import { Link } from '@inertiajs/react';
 export default function GuestNavbar({onAuthPage}) {
 
     return (
-        <nav className="bg-[#242424]/30 h-16 fixed top-0 w-full z-50 shadow-xl">
+        <nav className="bg-[#242424]/30 h-16 fixed top-0 w-screen z-50 shadow-xl">
             <div className="mx-auto px-4 sm:px-6 lg:px-8 h-full">
                 <div className="flex justify-between items-center h-full">
                     <div className="flex h-full">

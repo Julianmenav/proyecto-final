@@ -13,11 +13,14 @@ export default function PictureGrid({pictures, removeImg, auth}) {
                 const liked = picture.like
                     .map((el) => el.id)
                     .includes(auth.user?.id);
-
+                const saved = picture.saved_items
+                    .map((el) => el.user_id)
+                    .includes(auth.user?.id)
                 return (
                     <PictureCard
                         picture={picture}
                         liked={liked}
+                        saved={saved}
                         ownPicture={ownPicture}
                         remove={removeImg}
                         key={idx}

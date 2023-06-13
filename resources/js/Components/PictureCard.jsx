@@ -1,10 +1,11 @@
 import usePicture from "@/Hooks/usePicture";
 import { Link } from "@inertiajs/react";
 
-export default function PictureCard({ picture, ownPicture, liked, remove }) {
-    const { id, like, likeCount, likePicture, deletePicture } = usePicture(
+export default function PictureCard({ picture, ownPicture, liked, saved, remove }) {
+    const { id, like, likeCount, save, likePicture, deletePicture, savePicture } = usePicture(
         picture,
-        liked
+        liked,
+        saved
     );
 
     const handleDelete = (e) => {
@@ -33,7 +34,7 @@ export default function PictureCard({ picture, ownPicture, liked, remove }) {
                         />
                         <div
                             id="mask"
-                            className="z-50 opacity-0 hover:opacity-100 text-white absolute top-0 left-0 w-full h-full bg-gradient-to-t from-gray-900/[0.7] to-transparent transition duration-300 ease-in-out"
+                            className="z-50 opacity-0 hover:opacity-100 text-white absolute top-0 left-0 w-full h-full bg-gradient-to-t from-zinc-900 to-transparent transition duration-300 ease-in-out"
                         >
                             <div className="absolute bottom-0 w-full flex justify-between items-center">
                                 <p className="px-5 py-2 font-bold text-lg max-w-">
@@ -60,7 +61,7 @@ export default function PictureCard({ picture, ownPicture, liked, remove }) {
                     </Link>
                 </div>
                 <div
-                    className="w-full p-1 flex justify-end"
+                    className="w-full p-1 flex justify-between"
                 >
                     <div className="flex font-extrabold text-lg text-gray-50 justify-center items-center gap-1">
                         <button
@@ -82,6 +83,26 @@ export default function PictureCard({ picture, ownPicture, liked, remove }) {
                             </svg>
                         </button>
                         {likeCount}
+                    </div>
+                    <div className="flex justify-center items-center">
+                        <button
+                            onClick={savePicture}
+                        >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill={save ? '#FFF' : 'none'}
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="#FFF"
+                            className={ save ? 'h-6 w-6': 'h-6 w-6 hover:fill-[#FFF] hover:opacity-50'}
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                            />
+                        </svg>
+                        </button>
                     </div>
                 </div>
             </div>

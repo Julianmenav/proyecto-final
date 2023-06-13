@@ -15,7 +15,7 @@ class DiscoverController extends Controller
         $sortOrder = $request->sortOrder ?: 'desc';
         $count = 6;
         
-        $paginator = Picture::with('user')->with('like')->withCount('like')->orderBy($sortCategory, $sortOrder)->orderBy('id')->cursorPaginate($count)->withQueryString();
+        $paginator = Picture::with('user')->with('like')->with('savedItems')->withCount('like')->orderBy($sortCategory, $sortOrder)->orderBy('id')->cursorPaginate($count)->withQueryString();
         $morePages = $paginator->hasMorePages();
 
         if($paginator->onFirstPage()){

@@ -69,6 +69,7 @@ Route::middleware('auth')->group(function () {
     
     // Likes to Pictures
     Route::post('/picture', [PictureController::class, 'like'])->name('picture.like');
+    Route::post('/picture/save', [PictureController::class, 'saveItem'])->name('picture.save');
     Route::delete('/picture', [PictureController::class, 'delete'])->name('picture.delete');
     
     // Comments to Pictures

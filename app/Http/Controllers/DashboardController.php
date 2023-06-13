@@ -24,9 +24,9 @@ class DashboardController extends Controller
         $paginator = $search == 'saved' ? 
             Picture::whereHas('savedItems', function ($query) use ($auth_id) {
                 $query->where('user_id', $auth_id);
-            })->with('user')->with('like')->withCount('like')->orderBy($sortCategory, $sortOrder)->orderBy('id')->cursorPaginate($count)->withQueryString()
+            })->with('user')->with('like')->with('savedItems')->withCount('like')->orderBy($sortCategory, $sortOrder)->orderBy('id')->cursorPaginate($count)->withQueryString()
         :
-            User::find($auth_id)->picture()->with('user')->with('like')->withCount('like')->orderBy($sortCategory, $sortOrder)->orderBy('id')->cursorPaginate($count)->withQueryString();
+            User::find($auth_id)->picture()->with('user')->with('like')->with('savedItems')->withCount('like')->orderBy($sortCategory, $sortOrder)->orderBy('id')->cursorPaginate($count)->withQueryString();
         $morePages = $paginator->hasMorePages();
         
         if($paginator->onFirstPage()){

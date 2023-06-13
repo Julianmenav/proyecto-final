@@ -2,7 +2,6 @@ import PictureGrid from "@/Components/PictureGrid";
 import PrimaryLink from "@/Components/PrimaryLink";
 import ProfileInfo from "@/Components/ProfileInfo";
 import SearchRelationButton from "@/Components/SearchRelationButton";
-import SectionTitle from "@/Components/SectionTitle";
 import ShowMoreButton from "@/Components/ShowMoreButton";
 import SortMenu from "@/Components/SortMenu";
 import usePaginate from "@/Hooks/usePaginate";
@@ -11,7 +10,7 @@ import GlobalLayout from "@/Layouts/GlobalLayout";
 import { Head, Link } from "@inertiajs/react";
 import { useState } from "react";
 
-export default function Dashboard({ auth, errors, picturesPag, morePages, userStats }) {
+export default function Dashboard({ auth, errors, picturesPag, morePages, user }) {
     const { sortCategory, sortOrder, relation, handleOrder, handleCategory, handleRelation } = useSort();
     const { pictures, showMore, processing, nextPage, removeImg } = usePaginate(picturesPag, morePages);
 
@@ -20,7 +19,7 @@ export default function Dashboard({ auth, errors, picturesPag, morePages, userSt
             <Head title="Tu Perfil" />
             <section className="mx-2 sm:mx-8 md:mx-16 lg:mx-28">
                 <div className="sm:flex justfy-start items-center">
-                    <ProfileInfo auth={auth} userStats={userStats}/>
+                    <ProfileInfo user={user}/>
                     <div className="flex flex-1 justify-evenly items-center mx-5 md:mx-10 border-b border-[#AC3FFF]/[0.8]">
                         <SearchRelationButton active={relation === 'own'} onClick={() => handleRelation('own')}>Imágenes creadas</SearchRelationButton>
                         <SearchRelationButton active={relation === 'saved'} onClick={() => handleRelation('saved')}>Imágenes guardadas</SearchRelationButton>

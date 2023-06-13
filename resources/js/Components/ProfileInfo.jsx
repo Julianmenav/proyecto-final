@@ -1,23 +1,23 @@
 import React from "react";
 
-export default function ProfileInfo({ auth, userStats }) {
+export default function ProfileInfo({ user }) {
     return (
         <div className="flex gap-5 flex-start items-center h-fit py-5">
             <img
-                src={auth.user.profile_pic ?? "/storage/default.webp"}
+                src={user.profile_pic ?? "/storage/default.webp"}
                 alt="profilePic"
                 className={`w-28 h-28 rounded-full object-cover`}
             />
             <div className="h-full flex flex-col text-white">
-                <p className="text-5xl font-bold">{auth.user.name}</p>
+                <p className="text-xl md:text-2xl lg:text-5xl font-bold truncate">{user.name}</p>
                 <p className="flex items-center gap-1">
                     <span className="font-bold min-w-[20px]">
-                        {userStats.numPicturesCreated}
+                        {user.numPicturesCreated}
                     </span>
                     Creaciones
                 </p>
                 <p className="flex items-center gap-1">
-                    <span className="font-bold min-w-[20px]">{userStats.numLikes}</span>
+                    <span className="font-bold min-w-[20px]">{user.numLikes}</span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="#AC3FFF"
@@ -35,7 +35,7 @@ export default function ProfileInfo({ auth, userStats }) {
                 </p>
                 <p className="flex items-center gap-1">
                     <span className="font-bold min-w-[20px]">
-                        {userStats.numSavedPictures}
+                        {user.numSavedPictures}
                     </span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

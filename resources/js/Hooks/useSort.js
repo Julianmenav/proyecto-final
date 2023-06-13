@@ -5,11 +5,10 @@ export default function useSort() {
     const {location} = usePage().props.ziggy
     const { category, order, search } = usePage().props;
     const [firstRender, setFirstRender] = useState(true);
-    const [relation, setRelation] = useState(search ?? 'own')
-    const [sortOrder, setSortOrder] = useState(order ?? "desc");
-    const [sortCategory, setSortCategory] = useState(category ?? "like_count");
+    const [relation, setRelation] = useState(search)
+    const [sortOrder, setSortOrder] = useState(order);
+    const [sortCategory, setSortCategory] = useState(category);
 
-    console.log(usePage().props)
     useEffect(() => {
         if (firstRender) return setFirstRender(false);
         router.get(location,

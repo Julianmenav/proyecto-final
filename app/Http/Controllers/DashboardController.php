@@ -13,7 +13,7 @@ class DashboardController extends Controller
     const COUNT = 9;
 
     public function view(Request $request) {
-        $sortCategory = $request->sortCategory ?: 'like_count';
+        $sortCategory = $request->sortCategory ?: 'created_at';
         $sortOrder = $request->sortOrder ?: 'desc';
         $search = $request->search ?: 'own';
         $count = self::COUNT;

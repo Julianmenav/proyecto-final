@@ -1,6 +1,6 @@
-import PictureCard from "@/Components/PictureCard";
 import PictureGrid from "@/Components/PictureGrid";
 import PrimaryLink from "@/Components/PrimaryLink";
+import SearchRelationButton from "@/Components/SearchRelationButton";
 import SectionTitle from "@/Components/SectionTitle";
 import ShowMoreButton from "@/Components/ShowMoreButton";
 import SortMenu from "@/Components/SortMenu";
@@ -8,18 +8,21 @@ import usePaginate from "@/Hooks/usePaginate";
 import useSort from "@/Hooks/useSort";
 import GlobalLayout from "@/Layouts/GlobalLayout";
 import { Head, Link } from "@inertiajs/react";
+import { useState } from "react";
 
 export default function Dashboard({ auth, errors, picturesPag, morePages }) {
-    const { sortCategory, sortOrder, handleOrder, handleCategory } = useSort();
+    const { sortCategory, sortOrder, relation, handleOrder, handleCategory, handleRelation } = useSort();
     const { pictures, showMore, processing, nextPage, removeImg } = usePaginate(picturesPag, morePages);
-
 
     return (
         <GlobalLayout auth={auth} errors={errors}>
             <Head title="Dashboard" />
 
             <section className="">
-                <SectionTitle >Imagenes creadas</SectionTitle>
+                <div className="flex justify-evenly items-center mx-5 md:mx-10 border-b border-[#AC3FFF]/[0.8]">
+                    <SearchRelationButton active={relation === 'own'} onClick={() => handleRelation('own')}>Imagenes creadas</SearchRelationButton>
+                    <SearchRelationButton active={relation === 'saved'} onClick={() => handleRelation('saved')}>Imagenes guardadas</SearchRelationButton>
+                </div>
 
                 <div id='content' className="mx-2 sm:mx-8 md:mx-16 lg:mx-28 mt-8 ">
                     {pictures.length == 0 ? (

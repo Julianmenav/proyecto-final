@@ -3,22 +3,25 @@ import { useEffect, useState } from "react";
 
 export default function useSort() {
     const {location} = usePage().props.ziggy
-    const { category, order } = usePage().props;
+    const { category, order, search } = usePage().props;
     const [firstRender, setFirstRender] = useState(true);
+    const [relation, setRelation] = useState(search ?? 'own')
     const [sortOrder, setSortOrder] = useState(order ?? "desc");
     const [sortCategory, setSortCategory] = useState(category ?? "like_count");
 
+    console.log(usePage().props)
     useEffect(() => {
         if (firstRender) return setFirstRender(false);
         router.get(location,
             {
                 sortOrder: sortOrder,
                 sortCategory: sortCategory,
+                search: relation
             },
             {
                 preserveScroll: true,
             });
-    }, [sortOrder, sortCategory]);
+    }, [sortOrder, sortCategory, relation]);
 
     const handleOrder = () => {
         setSortOrder((prev) => {
@@ -31,5 +34,9 @@ export default function useSort() {
         setSortCategory(e.target.value);
     };
 
-    return { sortCategory, sortOrder, handleOrder, handleCategory };
+    const handleRelation = (newRelation) => {
+        setRelation(newRelation)
+    }
+
+    return { sortCategory, sortOrder, relation, handleRelation, handleOrder, handleCategory };
 }

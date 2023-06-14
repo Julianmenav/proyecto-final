@@ -104,7 +104,7 @@ export default function AuthenticatedNavbar({ user }) {
                                         <Dropdown.Link
                                             href={route("profile.edit")}
                                         >
-                                            Profile
+                                            Editar Perfil
                                         </Dropdown.Link>
                                         <Dropdown.Link
                                             href={route("logout")}

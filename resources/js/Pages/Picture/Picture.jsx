@@ -5,27 +5,35 @@ import { Head, router } from "@inertiajs/react";
 import React, { useEffect, useState } from "react";
 import CommentBox from "./Partials/CommentBox";
 import CommentSection from "./Partials/CommentSection";
+import DangerButton from "@/Components/DangerButton";
+import Modal from "@/Components/Modal";
+import SecondaryButton from "@/Components/SecondaryButton";
 
 export default function Picture({ picture, auth, errors, liked, ownPicture }) {
     const { id, like, likeCount, likePicture, deletePicture } = usePicture(
         picture,
         liked
     );
-    const [deleted, setDeleted] = useState(false)
+    const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false)
+
+    const confirmUserDeletion = () => {
+        setConfirmingUserDeletion(true);
+    };
+
+    const closeModal = () => {
+        setConfirmingUserDeletion(false);
+    };
 
     function handleLike(e) {
-        if (deleted) return;
         e.preventDefault();
 
         likePicture();
     }
 
     function handleDelete(e) {
-        if (deleted) return;
         e.preventDefault();
-
         deletePicture();
-        setDeleted(true);
+
         router.visit(route('dashboard.view'))
     }
 
@@ -71,7 +79,7 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
 
                         {ownPicture && (
                             <button
-                                onClick={handleDelete}
+                                onClick={confirmUserDeletion}
                                 className=" p-1 m-3  text-gray-100 bg-gray-500 opacity-70 text-sm font-bold flex items-center rounded-md shadow-md hover:bg-red-500 hover:opacity-100 active:translate-y-0.5"
                             >
                                 <svg
@@ -91,10 +99,26 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
                     <div className="flex items-center pb-2  ">
                         <div className="text-white text-2xl ">Comentarios</div>
                     </div>
-                    <CommentSection picture={picture} />
                     <CommentBox picture_id={id} />
+                    <CommentSection picture={picture} />
                 </div>
             </section>
+            <Modal show={confirmingUserDeletion} onClose={closeModal}>
+                <form onSubmit={handleDelete} className="p-6">
+                    <h2 className="text-lg font-medium text-gray-900">
+                        Deseas eliminar esta imagen?
+                    </h2>
+                    <div className="mt-6 flex justify-end">
+                        <SecondaryButton onClick={closeModal}>
+                            Cancelar
+                        </SecondaryButton>
+
+                        <DangerButton className="ml-3">
+                            Eliminar
+                        </DangerButton>
+                    </div>
+                </form>
+            </Modal>
         </GlobalLayout>
     );
 }

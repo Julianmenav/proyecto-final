@@ -14,20 +14,25 @@ class DashboardController extends Controller
     const COUNT = 6;
 
     public function view(Request $request) {
+        $count = self::COUNT;
+        $auth_id = Auth::id();
+
         $sortCategory = $request->sortCategory ?: 'created_at';
         $sortOrder = $request->sortOrder ?: 'desc';
         $search = $request->search ?: 'own';
-        $count = self::COUNT;
 
-        $auth_id = Auth::id();
 
-        $paginator = $search == 'saved' ? 
-            Picture::whereHas('savedItems', function ($query) use ($auth_id) {
-                $query->where('user_id', $auth_id);
-            })->with('user')->with('like')->with('savedItems')->withCount('like')->orderBy($sortCategory, $sortOrder)->orderBy('id')->cursorPaginate($count)->withQueryString()
-        :
-            User::find($auth_id)->picture()->with('user')->with('like')->with('savedItems')->withCount('like')->orderBy($sortCategory, $sortOrder)->orderBy('id')->cursorPaginate($count)->withQueryString();
-        $morePages = $paginator->hasMorePages();
+        try {
+            $paginator = $search == 'saved' ? 
+                Picture::whereHas('savedItems', function ($query) use ($auth_id) {
+                    $query->where('user_id', $auth_id);
+                })->with('user')->with('like')->with('savedItems')->withCount('like')->orderBy($sortCategory, $sortOrder)->orderBy('id')->cursorPaginate($count)->withQueryString()
+            :
+                User::find($auth_id)->picture()->with('user')->with('like')->with('savedItems')->withCount('like')->orderBy($sortCategory, $sortOrder)->orderBy('id')->cursorPaginate($count)->withQueryString();
+            $morePages = $paginator->hasMorePages();
+        } catch (\Throwable $th) {
+            abort('404');
+        }
         
         if($paginator->onFirstPage()){
 
@@ -38,7 +43,7 @@ class DashboardController extends Controller
             $num_likes = $user_pictures->get()->sum('like_count');
             $num_saved_pictures = Saved::where('user_id', $auth_id)->count();
             
-            $user = ['name'=> Auth::user()->name, 'profile_pic' => Auth::user()->profile_pic, 'numPicturesCreated'=>$num_pictures_created, 'numLikes'=> $num_likes, 'numSavedPictures' => $num_saved_pictures];
+            $user = ['id' => Auth::user()->id, 'name'=> Auth::user()->name, 'profile_pic' => Auth::user()->profile_pic, 'numPicturesCreated'=>$num_pictures_created, 'numLikes'=> $num_likes, 'numSavedPictures' => $num_saved_pictures];
 
             return Inertia::render('Dashboard/Dashboard', ['user' => $user, 'picturesPag' => $paginator, 'morePages' => $morePages, 'order' => $sortOrder, 'category' => $sortCategory, 'search' => $search]);
         }

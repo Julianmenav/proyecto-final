@@ -4,7 +4,7 @@ export default function Checkbox({ name, value, handleChange }) {
             type="checkbox"
             name={name}
             value={value}
-            className={"rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-[#AC3FFF]"}
+            className={"rounded border-gray-300 text-main shadow-sm focus:ring-0"}
             onChange={(e) => handleChange(e)}
         />
     );

@@ -21,7 +21,7 @@ export default function CommentBox({ picture_id }) {
     };
 
     return (
-        <div className="mt-4 mb-10 text-black rounded-md w-full pr-8">
+        <div className="mb-4 text-black rounded-md w-full pr-8">
             <form onSubmit={postComment} className="space-y-2">
                 <TextInput
                     id="name"

@@ -24,7 +24,7 @@ export default function PictureCard({
         deletePicture();
         remove(id);
     };
-    console.log(picture);
+    
     return (
         <div className="w-full bg-zinc-500/30 rounded-xl overflow-hidden">
             <div className="relative overflow-hidden aspect-video">
@@ -56,26 +56,10 @@ export default function PictureCard({
                         <Link href={route("user.view", {user_id: picture.user.id})}>
                             <p className="absolute top-1 left-1 text-zinc-100 px-2 py-1 leading-none bg-zinc-800/70 rounded-md z-50">@{picture.user.name}</p>
                         </Link>
-                        <div className="absolute bottom-0 w-full flex justify-between items-center">
+                        <div className="absolute bottom-0 w-full">
                             <p className="px-5 py-2 font-bold text-lg">
                                 {picture.description}
                             </p>
-                            {ownPicture && (
-                                <button
-                                    onClick={handleDelete}
-                                    className=" p-1 m-3  text-gray-100 bg-gray-500 opacity-70 text-sm font-bold flex items-center rounded-md shadow-md hover:bg-red-500 hover:opacity-100 active:translate-y-0.5"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor"
-                                        className="text-gray-100 w-6 h-6"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path>
-                                        <path d="M9 10h2v8H9zm4 0h2v8h-2z"></path>
-                                    </svg>
-                                </button>
-                            )}
                         </div>
                     </div>
                 </Link>

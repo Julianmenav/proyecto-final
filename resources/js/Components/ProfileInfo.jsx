@@ -1,13 +1,10 @@
 import React from "react";
+import CircleImage from "./CircleImage";
 
 export default function ProfileInfo({ user }) {
     return (
         <div className="flex gap-5 flex-start items-center h-fit py-5">
-            <img
-                src={user.profile_pic ?? "/storage/default.webp"}
-                alt="profilePic"
-                className={`w-28 h-28 rounded-full object-cover`}
-            />
+            <CircleImage img={user.profile_pic} className={"w-28 h-28"} />
             <div className="h-full flex flex-col text-white">
                 <p className="text-xl md:text-2xl lg:text-5xl font-bold truncate">
                     {user.name}

@@ -36,7 +36,7 @@ export default function Register() {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel forInput="name" value="Name" />
+                    <InputLabel forInput="name" value="Name" className="text-white font-bold"/>
 
                     <TextInput
                         id="name"
@@ -53,7 +53,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel forInput="email" value="Email" />
+                    <InputLabel forInput="email" value="Email" className="text-white font-bold"/>
 
                     <TextInput
                         id="email"
@@ -70,7 +70,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel forInput="password" value="Password" />
+                    <InputLabel forInput="password" value="Password" className="text-white font-bold"/>
 
                     <TextInput
                         id="password"
@@ -87,7 +87,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel forInput="password_confirmation" value="Confirm Password" />
+                    <InputLabel forInput="password_confirmation" value="Confirm Password" className="text-white font-bold"/>
 
                     <TextInput
                         id="password_confirmation"
@@ -106,9 +106,9 @@ export default function Register() {
                 <div className="flex items-center justify-end mt-4">
                     <Link
                         href={route('login')}
-                        className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="underline text-sm text-gray-100 hover:text-gray-200 rounded-md focus:outline-non"
                     >
-                        Already registered?
+                        Ya tienes una cuenta?
                     </Link>
 
                     <PrimaryButton className="ml-4" processing={processing}>

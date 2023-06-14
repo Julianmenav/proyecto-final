@@ -11,7 +11,7 @@ export default function AuthenticatedNavbar({ user }) {
 
     return (
         <>
-            <nav className="bg-[#242424]/50 shadow-md h-16 fixed top-0 w-screen z-50">
+            <nav className="bg-gradient-to-b from-[#242424] to-[#242424]/60 h-16 shadow-md fixed top-0 w-screen z-50">
                 <div className="mx-auto px-4 sm:px-6 lg:px-8 h-full">
                     <div className="flex justify-between items-center h-full">
                         <Link href="/" className="h-full flex items-center">

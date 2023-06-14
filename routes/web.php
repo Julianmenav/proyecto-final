@@ -10,6 +10,7 @@ use App\Http\Controllers\PictureController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -83,5 +84,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/comment', [CommentController::class, 'delete'])->name('comment.delete');
     
 });
+
+// ADMIN page
+Route::get('/admin', [AdminController::class, 'view'])->middleware('auth')->middleware('admin')->name('admin.view');
 
 require __DIR__.'/auth.php';

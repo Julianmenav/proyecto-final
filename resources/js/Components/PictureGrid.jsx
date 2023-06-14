@@ -7,7 +7,7 @@ export default function PictureGrid({pictures, removeImg, auth}) {
     };
 
     return (
-        <div className="mt-4 grid gap-y-3 gap-x-5 2xl:gap-x-24 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 " style={style}>
+        <div className="mt-4 grid gap-y-6 gap-x-5 2xl:gap-x-24 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 " style={style}>
             {pictures.map((picture, idx) => {
                 const ownPicture = picture.user_id == auth.user?.id;
                 const liked = picture.like

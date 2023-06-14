@@ -9,7 +9,9 @@ export default function ProfileInfo({ user }) {
                 className={`w-28 h-28 rounded-full object-cover`}
             />
             <div className="h-full flex flex-col text-white">
-                <p className="text-xl md:text-2xl lg:text-5xl font-bold truncate">{user.name}</p>
+                <p className="text-xl md:text-2xl lg:text-5xl font-bold truncate">
+                    {user.name}
+                </p>
                 <p className="flex items-center gap-1">
                     <span className="font-bold min-w-[20px]">
                         {user.numPicturesCreated}
@@ -17,7 +19,9 @@ export default function ProfileInfo({ user }) {
                     Creaciones
                 </p>
                 <p className="flex items-center gap-1">
-                    <span className="font-bold min-w-[20px]">{user.numLikes}</span>
+                    <span className="font-bold min-w-[20px]">
+                        {user.numLikes}
+                    </span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="#AC3FFF"
@@ -39,11 +43,11 @@ export default function ProfileInfo({ user }) {
                     </span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
                         viewBox="0 0 24 24"
+                        fill="#FFF"
+                        className="h-5 w-5"
                         strokeWidth={1.5}
-                        stroke="#AC3FFF"
-                        className="w-5 h-5"
+                        stroke="#FFF"
                     >
                         <path
                             strokeLinecap="round"

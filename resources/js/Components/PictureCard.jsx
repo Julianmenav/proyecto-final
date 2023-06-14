@@ -24,7 +24,7 @@ export default function PictureCard({
         deletePicture();
         remove(id);
     };
-    console.log(picture);
+    
     return (
         <div className="w-full bg-zinc-500/30 rounded-xl overflow-hidden">
             <div className="relative overflow-hidden aspect-video">

@@ -75,7 +75,7 @@ export default function DeleteUserForm({ className }) {
                             placeholder="Introduce tu contraseña"
                         />
 
-                        <InputError message={errors.password} className="mt-2" />
+                        <InputError message={"La contraseña no es correcta."} className="mt-2" />
                     </div>
 
                     <div className="mt-6 flex justify-end">

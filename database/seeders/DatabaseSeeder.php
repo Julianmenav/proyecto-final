@@ -41,12 +41,11 @@ class DatabaseSeeder extends Seeder
 
         foreach($users as $user){
             foreach($pictures as $picture){
-                if (rand(0,1) == 1){
+                if (rand(0,10) > 9){
                     Saved::create([
                         'user_id' => $user->id,
                         'picture_id' => $picture->id,
                         'saved_group' => 'FAVORITE'
-                    
                     ]);
                 }
             }

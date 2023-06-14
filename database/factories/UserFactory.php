@@ -24,6 +24,7 @@ class UserFactory extends Factory
             'profile_pic' => fake()->imageUrl(800, 500, 'profile', true),
             'password' => bcrypt('user12345'),
             'remember_token' => Str::random(10),
+            'is_admin' => false
         ];
     }
 

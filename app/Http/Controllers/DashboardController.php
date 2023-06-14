@@ -38,7 +38,7 @@ class DashboardController extends Controller
             $num_likes = $user_pictures->get()->sum('like_count');
             $num_saved_pictures = Saved::where('user_id', $auth_id)->count();
             
-            $user = ['name'=> Auth::user()->name, 'profile_pic' => Auth::user()->profile_pic, 'numPicturesCreated'=>$num_pictures_created, 'numLikes'=> $num_likes, 'numSavedPictures' => $num_saved_pictures];
+            $user = ['id' => Auth::user()->id, 'name'=> Auth::user()->name, 'profile_pic' => Auth::user()->profile_pic, 'numPicturesCreated'=>$num_pictures_created, 'numLikes'=> $num_likes, 'numSavedPictures' => $num_saved_pictures];
 
             return Inertia::render('Dashboard/Dashboard', ['user' => $user, 'picturesPag' => $paginator, 'morePages' => $morePages, 'order' => $sortOrder, 'category' => $sortCategory, 'search' => $search]);
         }

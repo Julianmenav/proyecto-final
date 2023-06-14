@@ -21,18 +21,9 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
 
     return (
         <section className={className}>
-            <header>
-                <h2 className="text-lg font-medium text-gray-900">Profile Information</h2>
-
-                <p className="mt-1 text-sm text-gray-600">
-                    Update your account's profile information and email address.
-                </p>
-            </header>
-
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
-                    <InputLabel for="name" value="Name" />
-
+                    <InputLabel for="name" value="Nombre" className={'text-zinc-100'}/>
                     <TextInput
                         id="name"
                         className="mt-1 block w-full"
@@ -42,13 +33,10 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                         isFocused
                         autoComplete="name"
                     />
-
                     <InputError className="mt-2" message={errors.name} />
                 </div>
-
                 <div>
-                    <InputLabel for="email" value="Email" />
-
+                    <InputLabel for="email" value="Email" className={'text-zinc-100'}/>
                     <TextInput
                         id="email"
                         type="email"
@@ -85,7 +73,7 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                 )}
 
                 <div className="flex items-center gap-4">
-                    <PrimaryButton processing={processing}>Save</PrimaryButton>
+                    <PrimaryButton processing={processing}>Guardar cambios</PrimaryButton>
 
                     <Transition
                         show={recentlySuccessful}
@@ -93,7 +81,7 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                         leaveTo="opacity-0"
                         className="transition ease-in-out"
                     >
-                        <p className="text-sm text-gray-600">Saved.</p>
+                        <p className="text-sm text-gray-100">Cambios guardados</p>
                     </Transition>
                 </div>
             </form>

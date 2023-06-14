@@ -31,7 +31,7 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
 
     return (
         <GlobalLayout auth={auth} errors={errors}>
-            <Head title={`Obra de ${picture.user.name}`} />
+            <Head title={`${picture.description}`} />
 
             <section className="flex flex-col justify-around items-center 2xl:flex-row 2xl:items-start h-full text-white">
                 <div className="max-w-2xl">

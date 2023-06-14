@@ -31,6 +31,10 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    public function savedItems() {
+        return $this->hasMany(Saved::class);
+    }
+    
     // LA PARTE DE LOS LIKES 
     public function like() {
         // En el caso de que asumamos una segunda relacion entre user y picture,

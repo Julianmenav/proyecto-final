@@ -11,11 +11,11 @@ class DiscoverController extends Controller
     public function view(Request $request) {
         // Por ahora el unico controlador muestra las que tienen mas likes.
         
-        $sortCategory = $request->sortCategory ?: 'like_count';
+        $sortCategory = $request->sortCategory ?: 'created_at';
         $sortOrder = $request->sortOrder ?: 'desc';
         $count = 6;
         
-        $paginator = Picture::with('user')->with('like')->withCount('like')->orderBy($sortCategory, $sortOrder)->orderBy('id')->cursorPaginate($count)->withQueryString();
+        $paginator = Picture::with('user')->with('like')->with('savedItems')->withCount('like')->orderBy($sortCategory, $sortOrder)->orderBy('id')->cursorPaginate($count)->withQueryString();
         $morePages = $paginator->hasMorePages();
 
         if($paginator->onFirstPage()){

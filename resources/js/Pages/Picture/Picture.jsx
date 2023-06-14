@@ -99,8 +99,8 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
                     <div className="flex items-center pb-2  ">
                         <div className="text-white text-2xl ">Comentarios</div>
                     </div>
-                    <CommentSection picture={picture} />
                     <CommentBox picture_id={id} />
+                    <CommentSection picture={picture} />
                 </div>
             </section>
             <Modal show={confirmingUserDeletion} onClose={closeModal}>

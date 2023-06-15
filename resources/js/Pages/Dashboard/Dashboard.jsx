@@ -33,7 +33,7 @@ export default function Dashboard({
         <GlobalLayout auth={auth} errors={errors}>
             <Head title="Tu Perfil" />
             <section className="mx-2 sm:mx-8 md:mx-16 lg:mx-28">
-                <div className="sm:flex justfy-start items-center">
+                <div className="sm:flex items-center">
                     {auth.user.id === user.id ? (
                         <Link href={route("profile.edit")}>
                             <ProfileInfo user={user} />

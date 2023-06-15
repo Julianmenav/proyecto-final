@@ -3,10 +3,10 @@ import CircleImage from "./CircleImage";
 
 export default function ProfileInfo({ user }) {
     return (
-        <div className="flex gap-5 flex-start items-center h-fit py-5">
+        <div className="flex gap-5 justify-center items-center h-fit py-5">
             <CircleImage img={user.profile_pic} className={"w-28 h-28"} />
             <div className="h-full flex flex-col text-white">
-                <p className="text-xl md:text-2xl lg:text-5xl font-bold truncate">
+                <p className="text-xl md:text-2xl xl:text-5xl font-bold truncate max-w-[180px] lg:max-w-[400px]">
                     {user.name}
                 </p>
                 <p className="flex items-center gap-1">

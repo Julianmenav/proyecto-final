@@ -76,7 +76,7 @@ export default function Comment({ comment, ownComment }) {
                     )}
                 </div>
             </div>
-            <div className="h-10 px-6 flex items-center">
+            <div className=" px-6 flex items-center">
                 {editable ? (
                     <form
                         onSubmit={editComment}
@@ -96,7 +96,7 @@ export default function Comment({ comment, ownComment }) {
                         />
                     </form>
                 ) : (
-                    <div>{comment.comment_text}</div>
+                    <p className="break-words w-full text-sm sm:text-base pb-3">{comment.comment_text}</p>
                 )}
             </div>
         </div>

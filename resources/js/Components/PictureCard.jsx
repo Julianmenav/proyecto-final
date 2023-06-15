@@ -26,12 +26,13 @@ export default function PictureCard({
     };
     
     return (
-        <div className="w-full bg-zinc-500/30 rounded-xl overflow-hidden">
-            <div className="relative overflow-hidden aspect-video">
+        <div className="bg-zinc-500/30 rounded-xl overflow-hidden">
+            <div className="relative overflow-hidden aspect-video flex items-center justify-center">
                 <Link
                     href={route("picture.view", {
                         picture_id: id,
                     })}
+                    className="w-full h-full"
                 >
                     <div className="flex items-center justify-center w-full h-full -z-50 absolute bg-gray-400 rounded dark:bg-gray-700">
                         <svg
@@ -45,7 +46,7 @@ export default function PictureCard({
                         </svg>
                     </div>
                     <img
-                        className="transform-gpu min-w-full aspect-auto -mt-14"
+                        className="transform-gpu min-w-full aspect-auto"
                         src={picture.image_url}
                         alt="imagenCreadaPorUsuario"
                     />

@@ -7,7 +7,7 @@ export default function CommentSection({picture}) {
 
 
     return (
-        <div className="flex flex-col gap-4 w-[750px] max-h-[550px] scrollbar scrollbar-thumb-main scrollbar-track-slate-500 overflow-y-scroll pr-8">
+        <div className="flex flex-col gap-4 w-full scrollbar scrollbar-thumb-main scrollbar-track-slate-500 overflow-y-scroll mb-12">
             {picture.comment.slice(0).reverse().map((comment, idx) => {
                 const ownComment = auth_user?.id == comment.user_id
                 return <Comment comment={comment} ownComment={ownComment} key={idx} />

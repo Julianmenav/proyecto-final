@@ -91,12 +91,12 @@ export default function Create(props) {
                     {
                         generatedPictureURL ? (
                             <>
-                              <p className="text-xl font-bold text-white">Listo! Tu imagen ha sido creada y añadida a tus obras!</p>
-                              <img src={generatedPictureURL} className="max-h-[500px] max-w- shadow-xl rounded-md"></img>
-                              <div className="flex gap-4">
-                                <PrimaryLink text="Ver en tu galería" href={route('dashboard.view')} className="bg-gray-100 text-black hover:bg-gray-300"></PrimaryLink>
-                                <PrimaryLink text="Sigue creando" href={route('create.view')} className="bg-[#240E4D] text-white border border-[#AC3FFF] hover:bg-[#361a6b]"></PrimaryLink>
-                              </div>
+                                <p className="text-xl font-bold text-white">Listo! Tu imagen ha sido creada y añadida a tus obras!</p>
+                                <img src={generatedPictureURL} className="w-full max-w-xs lg:max-w-sm  shadow-xl rounded-md"></img>
+                                <div className='flex flex-wrap gap-3 justify-evenly mt-8 lg:mt-12 mb-12'>
+                                    <PrimaryLink text="Ver en tu galería" href={route('dashboard.view')} className="shadow-sm shadow-white/40 bg-zinc-900 text-white border border-white hover:bg-zinc-800 transition-all duration-300"></PrimaryLink>
+                                    <PrimaryLink text="Sigue creando" href={route('create.view')} className="bg-zinc-300 text-zinc-700 hover:bg-zinc-400 transition-all duration-300"></PrimaryLink>
+                                </div>
                             </>
                         ) : loading ? (
                             <>

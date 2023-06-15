@@ -41,16 +41,16 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
         <GlobalLayout auth={auth} errors={errors}>
             <Head title={`${picture.description}`} />
 
-            <section className="flex flex-col justify-around items-center 2xl:flex-row 2xl:items-start h-full text-white">
-                <div className="max-w-2xl">
+            <section className="flex flex-col justify-around items-center lg:flex-row lg:items-start h-full text-white px-2">
+                <div className="max-w-xs lg:max-w-sm">
                     <UserNameAndLogo user={picture.user} />
-                    <div>
+                    <div className="w-full">
                         <img
-                            className="max-h-[600px]"
+                            className="w-full shadow-xl rounded-md"
                             src={picture.image_url}
                             alt="image"
                         />
-                        <p className="font-bold">{picture.description}</p>
+                        <p className="font-bold break-words w-full text-sm sm:text-base">{picture.description}</p>
                     </div>
                     <div className="flex items-center">
                         <div className="flex font-extrabold text-lg text-gray-50 justify-center items-center gap-1">
@@ -95,9 +95,9 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
                         )}
                     </div>
                 </div>
-                <div className="mt-8 min-w-[500px] flex flex-col ">
+                <div className="mt-8  w-full max-w-xs sm:max-w-lg lg:max-w-xl  xl:max-w-3xl flex flex-col ">
                     <div className="flex items-center pb-2  ">
-                        <div className="text-white text-2xl ">Comentarios</div>
+                        <div className="text-white text-xl lg:text-2xl">Comentarios</div>
                     </div>
                     <CommentBox picture_id={id} />
                     <CommentSection picture={picture} />

@@ -10,7 +10,7 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
             <Head title="Profile" />
 
             <div className="py-12">
-                <div className="max-w-xl mx-auto sm:px-6 lg:px-8 space-y-6">
+                <div className="max-w-xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6">
                     <UpdateProfilePictureForm className="max-w-xl" />
                     <UpdateProfileInformationForm
                         mustVerifyEmail={mustVerifyEmail}

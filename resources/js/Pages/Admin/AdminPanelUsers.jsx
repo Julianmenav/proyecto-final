@@ -1,5 +1,5 @@
 import GlobalLayout from "@/Layouts/GlobalLayout";
-import { Head, Link } from "@inertiajs/react";
+import { router, Head, Link } from "@inertiajs/react";
 import React from "react";
 
 export default function AdminPanelUsers({ auth, errors, usersPaginator }) {
@@ -10,6 +10,11 @@ export default function AdminPanelUsers({ auth, errors, usersPaginator }) {
         if(string.includes('&laquo;')) return <>&laquo;</>
         if(string.includes('&raquo;')) return <>&raquo;</>
         return string
+    }
+
+
+    const destroy = (user_id) => {
+        router.delete(route("admin.destroy", { user_id: user_id }));
     }
 
     return (
@@ -65,7 +70,7 @@ export default function AdminPanelUsers({ auth, errors, usersPaginator }) {
                                             {user.created_at.split(" ")[0]}
                                         </td>
                                         <td className="px-3 py-2 flex justify-center">
-                                            <button className="text-gray-100 bg-gray-500 p-1 opacity-70 text-sm font-bold rounded-md shadow-md hover:bg-red-500 hover:opacity-100 active:translate-y-0.5">
+                                            <button onClick={() => destroy(user.id)} className="text-gray-100 bg-gray-500 p-1 opacity-70 text-sm font-bold rounded-md shadow-md hover:bg-red-500 hover:opacity-100 active:translate-y-0.5">
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="currentColor"

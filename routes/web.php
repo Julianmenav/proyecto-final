@@ -87,5 +87,6 @@ Route::middleware('auth')->group(function () {
 
 // ADMIN page
 Route::get('/admin', [AdminController::class, 'view'])->middleware('auth')->middleware('admin')->name('admin.view');
+Route::delete('/admin', [AdminController::class, 'destroy'])->middleware('auth')->middleware('admin')->name('admin.destroy');
 
 require __DIR__.'/auth.php';

@@ -113,6 +113,14 @@ export default function AuthenticatedNavbar({ user }) {
                                         >
                                             Log Out
                                         </Dropdown.Link>
+                                        {
+                                            !!user.is_admin &&
+                                            (<Dropdown.Link
+                                                href={route("admin.view")}
+                                            >
+                                                Panel admin
+                                            </Dropdown.Link>)
+                                        }
                                     </Dropdown.Content>
                                 </Dropdown>
                             </div>

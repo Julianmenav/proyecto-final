@@ -1,4 +1,5 @@
-import Loading from "@/Components/Loading";
+import Modal from "@/Components/Modal";
+import PrimaryButton from "@/Components/PrimaryButton";
 import PrimaryLink from "@/Components/PrimaryLink";
 import TextInput from "@/Components/TextInput";
 import GlobalLayout from "@/Layouts/GlobalLayout";
@@ -12,6 +13,7 @@ export default function Create(props) {
     const [loading, setLoading] = useState(false)
     const [progress, setProgress] = useState(0)
     const [ellipsis, setEllipsis] = useState("")
+	const [showErrorModal, setShowErrorModal] = useState(false)
 
     useEffect(() => {
       const interval = setInterval(() => {
@@ -55,8 +57,14 @@ export default function Create(props) {
         }).catch(err => {
             console.log(err)
             setLoading(false)
+			setShowErrorModal(true)
         })
     };
+
+	const closeModal = () => {
+		setPrompt("")
+		setShowErrorModal(false)
+	}
 
     return (
         <GlobalLayout auth={props.auth} errors={props.errors}>
@@ -115,6 +123,18 @@ export default function Create(props) {
                     }
                 </div>
             </form>
+            <Modal show={showErrorModal} onClose={closeModal} maxWidth="sm"> 
+                <div className="p-6">
+                    <h2 className="text-lg font-medium text-gray-900">
+                        Ha habido un error al crear tu imagen. Vuelve a intentarlo con otra descripción.
+                    </h2>
+                    <div className="mt-6 flex justify-end">
+                        <PrimaryButton onClick={closeModal}>
+                            Entendido
+                        </PrimaryButton>
+                    </div>
+                </div>
+            </Modal>
         </GlobalLayout>
     );
 }

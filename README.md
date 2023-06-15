@@ -67,16 +67,15 @@ Control de versiones: Git
 - [X] PAGE: User Dashboard 
 - [X] PAGE: Pagina dedicada a una sola imagen (/picture/{picture_id})
 - [X] Comments
-- [ ] Diseño y desarrollo de las vistas de autenticacion (Login, register, forgot pswd...)
+- [X] Diseño y desarrollo de las vistas de autenticacion
 - [ ] Modificar paginacion para funcionar con scroll
 - [X] Implementar OPENAI API para crear imagenes
-- [ ] Store in Firebase
-- [ ] Error Handler Create page
-- [ ] PAGE: Galeria de cada usuario (/user/{user_id})
-- [ ] Añadir apartado de imagenes guardadas a (Dashboard/Galery pages)
-- [ ] User profile
-- [ ] Admin page
-- [ ] Not Found Pages
+- [X] Error Handler Create page
+- [X] PAGE: Galeria de cada usuario (/user/{user_id})
+- [X] Añadir apartado de imagenes guardadas a (Dashboard/Galery pages)
+- [X] User profile
+- [X] Admin page
+
 
 # Bibliografía
 

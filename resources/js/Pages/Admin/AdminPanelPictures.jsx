@@ -56,7 +56,7 @@ export default function AdminPanelPictures({ auth, errors, picturesPaginator }) 
                                         </td>
                                         <td className="px-3 py-2 text-center">
                                             <Link
-                                                href={route("admin.view", {
+                                                href={route("picture.view", {
                                                     picture_id: picture.id,
                                                 })}
                                             >

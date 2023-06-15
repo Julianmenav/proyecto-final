@@ -5,7 +5,7 @@ import NavLink from "@/Components/NavLink";
 
 export default function GlobalLayout({ auth, children }) {
     return (
-        <div className="overflow-x-hidden">
+        <div className="overflow-hidden h-screen flex flex-col">
             <div
                 className="min-h-screen w-screen bg-[#242424] fixed top-0 left-0 -z-50"
                 style={{ backgroundImage: 'url("/assets/dotGrid.svg")' }}
@@ -22,8 +22,8 @@ export default function GlobalLayout({ auth, children }) {
             ) : (
                 <GuestNavbar />
             )}
-            <main className="mt-20 w-screen z-50">{children}</main>
-            <div className="flex sm:hidden space-x-8 sm:-my-px sm:ml-10 w-screen justify-evenly fixed bottom-0 bg-[#242424] z-50 pt-3 pb-8">
+            <main className="mt-20 w-screen z-40 overflow-y-auto flex-1">{children}</main>
+            <div className="flex sm:hidden space-x-8 sm:-my-px sm:ml-10 w-screen justify-evenly bg-[#242424] z-50 pt-3 pb-8">
                 <NavLink
                     href={route("discover.view")}
                     active={route().current("discover.view")}

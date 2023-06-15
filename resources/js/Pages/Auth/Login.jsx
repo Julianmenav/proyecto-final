@@ -97,7 +97,7 @@ export default function Login({ status, canResetPassword }) {
                         href={route("register")}
                         className="underline text-sm text-gray-100 hover:text-gray-300 rounded-md focus:outline-none  "
                     >
-                        Registrate
+                        Regístrate
                     </Link>
                     <PrimaryButton
                         className="ml-4"

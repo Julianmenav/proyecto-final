@@ -22,7 +22,7 @@ export default function GlobalLayout({ auth, children }) {
             ) : (
                 <GuestNavbar />
             )}
-            <main className="mt-20 w-screen z-40 overflow-y-auto flex-1">{children}</main>
+            <main className="pt-20 w-screen z-40 overflow-y-auto flex-1">{children}</main>
             <div className="flex sm:hidden space-x-8 sm:-my-px sm:ml-10 w-screen justify-evenly bg-[#242424] z-50 pt-3 pb-8">
                 <NavLink
                     href={route("discover.view")}

@@ -4,11 +4,12 @@ import ProfileInfo from "@/Components/ProfileInfo";
 import SearchRelationButton from "@/Components/SearchRelationButton";
 import ShowMoreButton from "@/Components/ShowMoreButton";
 import SortMenu from "@/Components/SortMenu";
+import useOnScreen from "@/Hooks/useOnScreen";
 import usePaginate from "@/Hooks/usePaginate";
 import useSort from "@/Hooks/useSort";
 import GlobalLayout from "@/Layouts/GlobalLayout";
 import { Head, Link } from "@inertiajs/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Dashboard({
     auth,
@@ -17,18 +18,21 @@ export default function Dashboard({
     morePages,
     user,
 }) {
-    const {
-        sortCategory,
-        sortOrder,
-        relation,
-        handleOrder,
-        handleCategory,
-        handleRelation,
-    } = useSort();
-    const { pictures, showMore, processing, nextPage, removeImg } = usePaginate(
-        picturesPag,
-        morePages
-    );
+    const { sortCategory, sortOrder, relation, handleOrder, handleCategory, handleRelation} = useSort();
+    const { pictures, showMore, processing, nextPage, removeImg } = usePaginate( picturesPag, morePages );
+
+    const ref = useRef(null)
+    const isVisible = useOnScreen(ref)
+
+    useEffect(() => {
+      if(processing) return
+      if(!isVisible) return
+
+      nextPage()
+
+    }, [isVisible, processing])
+
+
     return (
         <GlobalLayout auth={auth} errors={errors}>
             <Head title="Tu Perfil" />
@@ -100,7 +104,8 @@ export default function Dashboard({
                                 auth={auth}
                             />
                             <ShowMoreButton
-                                className="w-full flex justify-center my-10 2xl:my-5"
+                                refe={ref}
+                                className="w-full flex justify-center my-20 "
                                 nextPage={nextPage}
                                 showMore={showMore}
                                 processing={processing}

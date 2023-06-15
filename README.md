@@ -68,7 +68,7 @@ Control de versiones: Git
 - [X] PAGE: Pagina dedicada a una sola imagen (/picture/{picture_id})
 - [X] Comments
 - [X] Diseño y desarrollo de las vistas de autenticacion
-- [ ] Modificar paginacion para funcionar con scroll
+- [X] Modificar paginacion para funcionar con scroll
 - [X] Implementar OPENAI API para crear imagenes
 - [X] Error Handler Create page
 - [X] PAGE: Galeria de cada usuario (/user/{user_id})

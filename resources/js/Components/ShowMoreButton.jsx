@@ -6,9 +6,10 @@ export default function ShowMoreButton({
     showMore,
     processing,
     nextPage,
+    refe
 }) {
     return (
-        <div className={className}>
+        <div ref={refe} className={className}>
             {showMore &&
                 (!processing ? (
                     <button

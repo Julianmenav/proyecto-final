@@ -42,7 +42,7 @@ export default function Welcome({ lastPicture, auth, errors}) {
                     <p>Desata tu creatividad con la potencia de la inteligencia artificial.</p>
                     <p>Crea imágenes asombrosas y compártelas.</p>
                     <div className='flex flex-wrap gap-3 justify-evenly mt-8 lg:mt-12 mb-12'>
-                        <PrimaryLink text="Comienza a crear" href={route('create.view')} className="shadow-sm shadow-white/40 bg-zinc-900 border border-white hover:bg-zinc-800 transition-all duration-300 animate-pulse"></PrimaryLink>
+                        <PrimaryLink text="Comienza a crear" href={route('create.view')} className="shadow-sm shadow-white/40 bg-zinc-900 border border-white hover:bg-zinc-700 transition-all duration-500 animate-pulse"></PrimaryLink>
                         <PrimaryLink text="Descubre más" href={route('discover.view')} className="bg-zinc-300 text-zinc-700 hover:bg-zinc-400 transition-all duration-300"></PrimaryLink>
                     </div>
                 </div>

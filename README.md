@@ -2,9 +2,14 @@
 
 # Indice
 
-- Descripción del proyecto
-- Historial de cambios
-- Bibliografía
+- [Descripcion](#description)
+- [Historial de cambios](#history)
+- [Bibliografía](#bibliografy)
+- [Mockup Figma](#mockup)
+- [Landing Page](#landing)
+- [Video explicativo](#video)
+
+<a name="description" ></a>
 
 # Descripcion del proyecto
 
@@ -49,10 +54,7 @@ Control de versiones: Git
 <img src="https://github.com/Julianmenav/stuff/blob/main/laravelProject/diagrama_bbdd.png?raw=true">
 
 
-
-## Boceto de Diseño ✏️
-
-[Pre-mockup en Figma](https://www.figma.com/file/G5RZLgNNFuACQYsCFq4hgZ/01-Desktop%26Mobile-JulianMena?node-id=0%3A1&t=gk5DSPZuXSesguvR-1)
+<a name="history" ></a>
 
 # Historial de cambios
 
@@ -76,6 +78,7 @@ Control de versiones: Git
 - [X] User profile
 - [X] Admin page
 
+<a name="bibliografy" ></a>
 
 # Bibliografía
 
@@ -89,6 +92,23 @@ Control de versiones: Git
 
 [Cliente de OpenAI para PHP](https://github.com/openai-php/client#images-resource)
 
-# Video checkpoint
+<a name="mockup"></a>
+
+# Boceto de Diseño ✏️
+
+[Mockup en Figma](https://www.figma.com/file/G5RZLgNNFuACQYsCFq4hgZ/01-Desktop%26Mobile-JulianMena?node-id=0%3A1&t=gk5DSPZuXSesguvR-1)
+
+<a name="landing"></a>
+
+# Landing Page 🚀
+
+[Landing Page Desplegada](https://julianmenav.github.io/landing-page-dreative/)
+
+[Codigo en github](https://github.com/Julianmenav/landing-page-dreative)
+
+<a name="video"></a>
+
+# Video explicativo
 
 [Click para ver video en youtube](https://youtu.be/MhpPijsZVeM)
+

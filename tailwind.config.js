@@ -13,6 +13,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ["Nunito", ...defaultTheme.fontFamily.sans],
+                visby: "Visby"
             },
             colors: {
                 main: '#AC3FFF'

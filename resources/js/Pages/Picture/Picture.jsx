@@ -41,7 +41,7 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
         <GlobalLayout auth={auth} errors={errors}>
             <Head title={`${picture.description}`} />
 
-            <section className="flex flex-col justify-around items-center lg:flex-row lg:items-start h-full text-white px-2">
+            <section className="flex flex-col justify-evenly items-center lg:flex-row lg:items-start lg:h-full text-white px-2 2xl:px-20 lg:mt-6">
                 <div className="max-w-xs lg:max-w-sm">
                     <UserNameAndLogo user={picture.user} />
                     <div className="w-full">
@@ -95,7 +95,7 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
                         )}
                     </div>
                 </div>
-                <div className="mt-8  w-full max-w-xs sm:max-w-lg lg:max-w-xl  xl:max-w-3xl flex flex-col ">
+                <div className=" lg:mt-8 w-full max-w-xs sm:max-w-lg lg:max-w-xl xl:max-w-3xl flex flex-col max-h-full">
                     <div className="flex items-center pb-2  ">
                         <div className="text-white text-xl lg:text-2xl">Comentarios</div>
                     </div>

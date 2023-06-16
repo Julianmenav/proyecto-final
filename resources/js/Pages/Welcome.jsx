@@ -11,9 +11,9 @@ export default function Welcome({ lastPicture, auth, errors}) {
             errors={errors}
         >
             <Head title="Welcome"/>
-            <div className='flex px-8 md:px-14 justify-center text-white flex-col xl:flex-row items-center'>
-                <div className='mt-3 sm:mt-8 lg:mt-16'>
-                    <div className='w-fit max-w-4xl text-4xl  sm:text-5xl  xl:text-8xl font-visby'>
+            <div className='flex px-8 justify-center text-white flex-col items-center md:px-14 md:mt-4 lg:flex-row lg:mt-20 lg:gap-x-10'>
+                <div className=''>
+                    <div className='w-fit max-w-4xl text-4xl  sm:text-5xl lg:text-6xl  xl:text-8xl font-visby'>
                         Crea imágenes únicas con <span className='text-main font-bold'>IA</span>
                     </div>
                     <div className='text-base sm:text-xl max-w-xl mt-2 sm:mt-6 md:mt-12'>
@@ -25,7 +25,7 @@ export default function Welcome({ lastPicture, auth, errors}) {
                         <PrimaryLink text="Descubre más" href={route('discover.view')} className="bg-zinc-700 text-zinc-300 hover:bg-zinc-600 transition-all duration-300"></PrimaryLink>
                     </div>
                 </div>
-                <div className='pt-7 lg:pt-16'>
+                <div className='mt-8 sm:mt-0'>
                     <div>
                         <div className='aspect-video sm:aspect-auto max-w-md xl:max-w-lg overflow-hidden rounded-xl relative shadow-sm sm:shadow-md shadow-white/30 flex items-center justify-center'>
                             <div className="flex items-center justify-center w-full h-full -z-50 absolute bg-gray-400 rounded dark:bg-gray-700">

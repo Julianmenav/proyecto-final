@@ -32,7 +32,7 @@ export default function PictureCard({
                     href={route("picture.view", {
                         picture_id: id,
                     })}
-                    className="w-full h-full"
+                    className="w-full h-full flex items-center justify-center"
                 >
                     <div className="flex items-center justify-center w-full h-full -z-50 absolute bg-gray-400 rounded dark:bg-gray-700">
                         <svg

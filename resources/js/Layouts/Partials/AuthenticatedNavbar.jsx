@@ -121,6 +121,14 @@ export default function AuthenticatedNavbar({ user, messages }) {
                                                 {messages.admin}
                                             </Dropdown.Link>)
                                         }
+                                        <Dropdown.Link
+                                            href={route("locale.setting", messages.lang)}
+                                            method="get"
+                                            as="button"
+                                            className="text-center"
+                                        >
+                                            {messages.lang == 'es' ? '🇪🇸': '🇺🇸'}
+                                        </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>
                             </div>

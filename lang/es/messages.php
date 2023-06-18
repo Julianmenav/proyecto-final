@@ -54,6 +54,7 @@ return [
     'edit_profile' => 'Editar Perfil',
     'logout' => 'Cerrar sesión',
     'admin' => 'Panel admin',
+    'lang' => 'en',
     'upload_button' => 'Subir foto',
     'saved_changes' => 'Cambios guardados',
     'save' => 'Guardar cambios',

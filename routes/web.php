@@ -29,20 +29,6 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 
-// Route::get('/prueba/{i?}', function(Request $request, $i = 'ninguno'){
-//     echo "El valor es $i";
-//     dump($request);
-// });
-
-Route::get('/autoLiked', function(){
-    $likes = Picture::whereHas('like', function($query)  {
-        $query->whereColumn('user_id', 'pictures.user_id');
-    })->get();
-
-    echo $likes;
-});
-//Si esta logeado entra, si no back to login.
-
 // NOT AUTH PAGES
 
 // Welcome page
@@ -52,6 +38,10 @@ Route::get('/discover', [DiscoverController::class, 'view'])->name('discover.vie
 //Picture Page
 Route::get('/picture', function(){return Redirect::route('discover.view');});
 Route::get('/picture/{picture_id}', [PictureController::class, 'view'])->name('picture.view');
+Route::get('/locale/{locale}', function($locale) {
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('locale.setting');
 
 
 // AUTH PAGES

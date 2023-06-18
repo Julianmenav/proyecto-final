@@ -54,6 +54,7 @@ return [
     'edit_profile' => 'Edit Profile',
     'logout' => 'Log out',
     'admin' => 'Admin Panel',
+    'lang' => 'es',
     'upload_button' => 'Upload photo',
     'saved_changes' => 'Changes saved',
     'save' => 'Save changes',

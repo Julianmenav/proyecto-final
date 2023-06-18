@@ -4,7 +4,7 @@ import { Transition } from "@headlessui/react";
 import { useForm, usePage } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 
-export default function UpdateProfilePictureForm({ className }) {
+export default function UpdateProfilePictureForm({ className, messages }) {
     const user = usePage().props.auth.user;
     const [profilePicture, setProfilePicture] = useState(user.profile_pic);
     const { data, setData, post, processing, recentlySuccessful } = useForm({
@@ -51,7 +51,7 @@ export default function UpdateProfilePictureForm({ className }) {
                 </div>
                 <div className="flex items-center gap-4">
                     <PrimaryButton processing={processing}>
-                        Subir foto
+                        {messages.upload_button}
                     </PrimaryButton>
 
                     <Transition
@@ -61,7 +61,7 @@ export default function UpdateProfilePictureForm({ className }) {
                         className="transition ease-in-out"
                     >
                         <p className="text-sm text-gray-100">
-                            Cambios guardados
+                            {messages.saved_changes}
                         </p>
                     </Transition>
                 </div>

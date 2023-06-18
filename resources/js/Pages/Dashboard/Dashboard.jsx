@@ -17,6 +17,7 @@ export default function Dashboard({
     picturesPag,
     morePages,
     user,
+    messages
 }) {
     const { sortCategory, sortOrder, relation, handleOrder, handleCategory, handleRelation} = useSort();
     const { pictures, showMore, processing, nextPage, removeImg } = usePaginate( picturesPag, morePages );
@@ -34,13 +35,13 @@ export default function Dashboard({
 
 
     return (
-        <GlobalLayout auth={auth} errors={errors}>
+        <GlobalLayout auth={auth} errors={errors} messages={messages}>
             <Head title="Tu Perfil" />
             <section className="mx-2 sm:mx-8 md:mx-16 lg:mx-28">
                 <div className="sm:flex items-center">
                     {auth.user.id === user.id ? (
                         <Link href={route("profile.edit")}>
-                            <ProfileInfo user={user} />
+                            <ProfileInfo user={user} messages={messages} />
                         </Link>
                     ) : (
                         <ProfileInfo user={user} />
@@ -50,13 +51,13 @@ export default function Dashboard({
                             active={relation === "own"}
                             onClick={() => handleRelation("own")}
                         >
-                            Imágenes creadas
+                            {messages.created}
                         </SearchRelationButton>
                         <SearchRelationButton
                             active={relation === "saved"}
                             onClick={() => handleRelation("saved")}
                         >
-                            Imágenes guardadas
+                            {messages.stored}
                         </SearchRelationButton>
                     </div>
                 </div>
@@ -97,6 +98,7 @@ export default function Dashboard({
                                 sortOrder={sortOrder}
                                 handleOrder={handleOrder}
                                 handleCategory={handleCategory}
+                                messages={messages}
                             />
                             <PictureGrid
                                 pictures={pictures}

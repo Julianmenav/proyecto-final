@@ -6,7 +6,8 @@ export default function ShowMoreButton({
     showMore,
     processing,
     nextPage,
-    refe
+    refe,
+    children
 }) {
     return (
         <div ref={refe} className={className}>
@@ -16,7 +17,7 @@ export default function ShowMoreButton({
                         className="px-3 py-1 bg-gray-600 h-7 leading-3 0 text-sm rounded-lg text-white font-bold  hover:bg-gray-500"
                         onClick={nextPage}
                     >
-                        Ver más
+                        {children}
                     </button>
                 ) : (
                     <Loading />

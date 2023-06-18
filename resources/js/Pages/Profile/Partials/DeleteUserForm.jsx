@@ -7,7 +7,7 @@ import SecondaryButton from '@/Components/SecondaryButton';
 import TextInput from '@/Components/TextInput';
 import { useForm } from '@inertiajs/react';
 
-export default function DeleteUserForm({ className }) {
+export default function DeleteUserForm({ className, messages }) {
     const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);
     const passwordInput = useRef();
 
@@ -46,19 +46,19 @@ export default function DeleteUserForm({ className }) {
     return (
         <section className={`space-y-6 ${className}`}>
             <header>
-                <h2 className="text-lg font-medium text-gray-100">Zona peligrosa ! </h2>
+                <h2 className="text-lg font-medium text-gray-100">{messages.dangerzone}</h2>
 
                 <p className="mt-1 text-sm text-gray-300">
-                    Si borras tu cuenta, ésta y todas las imágenes creadas en la misma serán borradas para siempre, piénsalo 2 veces!
+                    {messages.danger_advice}
                 </p>
             </header>
 
-            <DangerButton onClick={confirmUserDeletion}>Eliminar cuenta</DangerButton>
+            <DangerButton onClick={confirmUserDeletion}>{messages.delete_account}</DangerButton>
 
             <Modal show={confirmingUserDeletion} onClose={closeModal}>
                 <form onSubmit={deleteUser} className="p-6">
                     <h2 className="text-lg font-medium text-gray-900">
-                        Estas seguro de que deseas eliminar esta cuenta para siempre?
+                        {messages.account_advice}
                     </h2>
                     <div className="mt-6">
                         <InputLabel for="password" value="Password" className="sr-only" />
@@ -79,10 +79,10 @@ export default function DeleteUserForm({ className }) {
                     </div>
 
                     <div className="mt-6 flex justify-end">
-                        <SecondaryButton onClick={closeModal}>Cancelar</SecondaryButton>
+                        <SecondaryButton onClick={closeModal}>{messages.cancel}</SecondaryButton>
 
                         <DangerButton className="ml-3" processing={processing}>
-                            Estoy loco
+                            {messages.delete_account_2}
                         </DangerButton>
                     </div>
                 </form>

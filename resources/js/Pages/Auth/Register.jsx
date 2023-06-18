@@ -6,7 +6,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Register() {
+export default function Register({messages}) {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
@@ -36,7 +36,7 @@ export default function Register() {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel forInput="name" value="Nombre" className="text-white font-bold"/>
+                    <InputLabel forInput="name" value={messages.name} className="text-white font-bold"/>
 
                     <TextInput
                         id="name"
@@ -53,7 +53,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel forInput="email" value="Email" className="text-white font-bold"/>
+                    <InputLabel forInput="email" value={messages.email} className="text-white font-bold"/>
 
                     <TextInput
                         id="email"
@@ -70,7 +70,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel forInput="password" value="Contraseña" className="text-white font-bold"/>
+                    <InputLabel forInput="password" value={messages.pass} className="text-white font-bold"/>
 
                     <TextInput
                         id="password"
@@ -87,7 +87,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel forInput="password_confirmation" value="Otra vez por favor :)" className="text-white font-bold"/>
+                    <InputLabel forInput="password_confirmation" value={messages.again} className="text-white font-bold"/>
 
                     <TextInput
                         id="password_confirmation"
@@ -108,11 +108,11 @@ export default function Register() {
                         href={route('login')}
                         className="underline text-sm text-gray-100 hover:text-gray-200 rounded-md focus:outline-non"
                     >
-                        Ya tienes una cuenta?
+                        {messages.already}
                     </Link>
 
                     <PrimaryButton className="ml-4" processing={processing}>
-                        Crear cuenta
+                        {messages.create_account}
                     </PrimaryButton>
                 </div>
             </form>

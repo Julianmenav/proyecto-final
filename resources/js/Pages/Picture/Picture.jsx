@@ -9,7 +9,7 @@ import DangerButton from "@/Components/DangerButton";
 import Modal from "@/Components/Modal";
 import SecondaryButton from "@/Components/SecondaryButton";
 
-export default function Picture({ picture, auth, errors, liked, ownPicture }) {
+export default function Picture({ picture, auth, errors, liked, ownPicture, messages }) {
     const { id, like, likeCount, likePicture, deletePicture } = usePicture(
         picture,
         liked
@@ -38,7 +38,7 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
     }
 
     return (
-        <GlobalLayout auth={auth} errors={errors}>
+        <GlobalLayout auth={auth} errors={errors} messages={messages}>
             <Head title={`${picture.description}`} />
 
             <section className="flex flex-col justify-evenly items-center lg:flex-row lg:items-start lg:h-full text-white px-2 2xl:px-20 lg:mt-6">
@@ -97,24 +97,24 @@ export default function Picture({ picture, auth, errors, liked, ownPicture }) {
                 </div>
                 <div className=" lg:mt-8 w-full max-w-xs sm:max-w-lg lg:max-w-xl xl:max-w-3xl flex flex-col max-h-full">
                     <div className="flex items-center pb-2  ">
-                        <div className="text-white text-xl lg:text-2xl">Comentarios</div>
+                        <div className="text-white text-xl lg:text-2xl">{messages.comments}</div>
                     </div>
-                    <CommentBox picture_id={id} />
-                    <CommentSection picture={picture} />
+                    <CommentBox picture_id={id} messages={messages} />
+                    <CommentSection picture={picture} messages={messages} />
                 </div>
             </section>
             <Modal show={confirmingUserDeletion} onClose={closeModal}>
                 <form onSubmit={handleDelete} className="p-6">
                     <h2 className="text-lg font-medium text-gray-900">
-                        Deseas eliminar esta imagen?
+                        {messages.picture_advice}
                     </h2>
                     <div className="mt-6 flex justify-end">
                         <SecondaryButton onClick={closeModal}>
-                            Cancelar
+                            {messages.cancel}
                         </SecondaryButton>
 
                         <DangerButton className="ml-3">
-                            Eliminar
+                            {messages.delete}
                         </DangerButton>
                     </div>
                 </form>

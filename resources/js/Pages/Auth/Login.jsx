@@ -7,7 +7,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
 
-export default function Login({ status, canResetPassword }) {
+export default function Login({ status, canResetPassword, messages }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",
@@ -47,7 +47,7 @@ export default function Login({ status, canResetPassword }) {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel forInput="email" value="Email" className="text-white font-bold"/>
+                    <InputLabel forInput="email" value={messages.email} className="text-white font-bold"/>
 
                     <TextInput
                         id="email"
@@ -64,7 +64,7 @@ export default function Login({ status, canResetPassword }) {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel forInput="password" value="Contraseña" className="text-white font-bold"/>
+                    <InputLabel forInput="password" value={messages.pass} className="text-white font-bold"/>
 
                     <TextInput
                         id="password"
@@ -87,7 +87,7 @@ export default function Login({ status, canResetPassword }) {
                             handleChange={onHandleChange}
                         />
                         <span className="ml-2 text-sm text-gray-100 ">
-                            Mantener la sesión iniciada
+                        {messages.session}
                         </span>
                     </label>
                 </div>
@@ -97,7 +97,7 @@ export default function Login({ status, canResetPassword }) {
                         href={route("register")}
                         className="underline text-sm text-gray-100 hover:text-gray-300 rounded-md focus:outline-none  "
                     >
-                        Regístrate
+                        {messages.register}
                     </Link>
                     <PrimaryButton
                         className="ml-4"

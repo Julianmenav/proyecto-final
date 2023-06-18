@@ -3,7 +3,7 @@ import AuthenticatedNavbar from "./Partials/AuthenticatedNavbar";
 import GuestNavbar from "./Partials/GuestNavbar";
 import NavLink from "@/Components/NavLink";
 
-export default function GlobalLayout({ auth, children }) {
+export default function GlobalLayout({ auth, children, messages }) {
     return (
         <div className="overflow-hidden h-screen flex flex-col">
             <div
@@ -18,7 +18,7 @@ export default function GlobalLayout({ auth, children }) {
                 }}
             ></div>
             {auth.user ? (
-                <AuthenticatedNavbar user={auth.user} />
+                <AuthenticatedNavbar user={auth.user} messages={messages} />
             ) : (
                 <GuestNavbar />
             )}

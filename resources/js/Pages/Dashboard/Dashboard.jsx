@@ -36,7 +36,7 @@ export default function Dashboard({
 
     return (
         <GlobalLayout auth={auth} errors={errors} messages={messages}>
-            <Head title="Tu Perfil" />
+            <Head title={user.name} />
             <section className="mx-2 sm:mx-8 md:mx-16 lg:mx-28">
                 <div className="sm:flex items-center">
                     {auth.user.id === user.id ? (
@@ -44,7 +44,7 @@ export default function Dashboard({
                             <ProfileInfo user={user} messages={messages} />
                         </Link>
                     ) : (
-                        <ProfileInfo user={user} />
+                        <ProfileInfo user={user} messages={messages}/>
                     )}
                     <div className="flex flex-1 justify-evenly items-center mx-5 md:mx-10 border-b border-[#AC3FFF]/[0.8]">
                         <SearchRelationButton

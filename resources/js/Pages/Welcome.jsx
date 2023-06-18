@@ -11,7 +11,7 @@ export default function Welcome({ lastPicture, auth, errors, messages}) {
             errors={errors}
             messages={messages}
         >
-            <Head title="Welcome"/>
+            <Head title="Dreative"/>
             <div className='flex px-8 justify-center text-white flex-col items-center md:px-14 md:mt-4 lg:flex-row lg:mt-20 lg:gap-x-10'>
                 <div className=''>
                     <div className='w-fit max-w-4xl text-4xl  sm:text-5xl lg:text-6xl  xl:text-8xl font-visby'>

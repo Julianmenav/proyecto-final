@@ -3,7 +3,7 @@ import UserNameAndLogo from "@/Components/UserNameAndLogo";
 import { router, useForm } from "@inertiajs/react";
 import React, { useEffect, useRef, useState } from "react";
 
-export default function Comment({ comment, ownComment }) {
+export default function Comment({ comment, ownComment, messages }) {
     const [editable, setEditable] = useState(false);
     const { data, setData, put, reset, processing } = useForm({
         comment_text: comment.comment_text,
@@ -55,14 +55,14 @@ export default function Comment({ comment, ownComment }) {
                         <>
                             {editable ? (
                                 <div className="px-2 py-1.5 h-full leading-3 0 text-xs rounded-lg text-white font-bold bg-gray-400 transition duration-300 ease-in-out">
-                                    Editando
+                                    {messages.edit_button_2}
                                 </div>
                             ) : (
                                 <button
                                     className="px-2 py-1.5 bg-gray-500 h-full leading-3 0 text-xs rounded-lg text-white font-bold hover:bg-gray-400 transition duration-300 ease-in-out"
                                     onClick={handleEdit}
                                 >
-                                    Editar
+                                    {messages.edit_button}
                                 </button>
                             )}
 
@@ -70,7 +70,7 @@ export default function Comment({ comment, ownComment }) {
                                 onClick={deleteComment}
                                 className="px-2 py-1.5 bg-red-500 h-full leading-3 0 text-xs rounded-lg text-white font-bold hover:bg-red-400 transition duration-300 ease-in-out"
                             >
-                                Borrar
+                                {messages.delete_comment}
                             </button>
                         </>
                     )}

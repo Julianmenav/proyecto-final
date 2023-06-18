@@ -1,7 +1,7 @@
 import React from "react";
 import CircleImage from "./CircleImage";
 
-export default function ProfileInfo({ user }) {
+export default function ProfileInfo({ user, messages }) {
     return (
         <div className="flex gap-5 justify-center items-center h-fit py-5">
             <CircleImage img={user.profile_pic} className={"w-28 h-28"} />
@@ -13,7 +13,7 @@ export default function ProfileInfo({ user }) {
                     <span className="font-bold min-w-[20px]">
                         {user.numPicturesCreated}
                     </span>
-                    Creaciones
+                    {messages.works}
                 </p>
                 <p className="flex items-center gap-1">
                     <span className="font-bold min-w-[20px]">

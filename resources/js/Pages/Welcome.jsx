@@ -2,27 +2,28 @@ import PrimaryLink from '@/Components/PrimaryLink';
 import GlobalLayout from '@/Layouts/GlobalLayout';
 import { Head, Link } from '@inertiajs/react';
 
-export default function Welcome({ lastPicture, auth, errors}) {
+export default function Welcome({ lastPicture, auth, errors, messages}) {
     const user = lastPicture.user
 
     return (
         <GlobalLayout
             auth={auth}
             errors={errors}
+            messages={messages}
         >
             <Head title="Welcome"/>
             <div className='flex px-8 justify-center text-white flex-col items-center md:px-14 md:mt-4 lg:flex-row lg:mt-20 lg:gap-x-10'>
                 <div className=''>
                     <div className='w-fit max-w-4xl text-4xl  sm:text-5xl lg:text-6xl  xl:text-8xl font-visby'>
-                        Crea imágenes únicas con <span className='text-main font-bold'>IA</span>
+                        {messages.title} <span className='text-main font-bold'>{messages.title_ai}</span>
                     </div>
                     <div className='text-base sm:text-xl max-w-xl mt-2 sm:mt-6 md:mt-12'>
-                        <p>Desata tu creatividad con la potencia de la inteligencia artificial.</p>
-                        <p className='hidden sm:block'>Crea imágenes asombrosas y compártelas.</p>
+                        <p>{messages.subtitle}</p>
+                        <p className='hidden sm:block'>{messages.subtitle_2}</p>
                     </div>
                     <div className='hidden sm:flex flex-wrap gap-3 justify-evenly mt-8 lg:mt-12 mb-12 xl:justify-start xl:gap-20'>
-                        <PrimaryLink text="Comienza a crear" href={route('create.view')} className="shadow-md shadow-main/40 bg-zinc-900 border border-white hover:bg-zinc-700 transition-all duration-500 animate-pulse"></PrimaryLink>
-                        <PrimaryLink text="Descubre más" href={route('discover.view')} className="bg-zinc-700 text-zinc-300 hover:bg-zinc-600 transition-all duration-300"></PrimaryLink>
+                        <PrimaryLink text={messages.button_create} href={route('create.view')} className="shadow-md shadow-main/40 bg-zinc-900 border border-white hover:bg-zinc-800 transition-all duration-500 animate-pulse hover:animate-none"></PrimaryLink>
+                        <PrimaryLink text={messages.button_discover} href={route('discover.view')} className="bg-zinc-700 text-zinc-300 hover:bg-zinc-600 transition-all duration-300"></PrimaryLink>
                     </div>
                 </div>
                 <div className='mt-8 sm:mt-0'>
@@ -43,11 +44,11 @@ export default function Welcome({ lastPicture, auth, errors}) {
                                 <img src={lastPicture.image_url} alt="ultimaImagenCreada z-10" className='w-full '/>
                             </Link>
                         </div>
-                        <p className='text-base mt-0.5'>Imagen creada por <Link href={route('user.view', {'user_id': user.id})}>@{user.name}</Link></p>
+                        <p className='text-base mt-0.5'>{messages.img_created_by} <Link href={route('user.view', {'user_id': user.id})}>@{user.name}</Link></p>
                     </div>
                     <div className='flex sm:hidden flex-wrap gap-3 justify-evenly mt-8 lg:mt-12 mb-12'>
-                        <PrimaryLink text="Comienza a crear" href={route('create.view')} className="shadow-md shadow-main/40 bg-zinc-900 border border-white hover:bg-zinc-700 transition-all duration-500 animate-pulse"></PrimaryLink>
-                        <PrimaryLink text="Descubre más" href={route('discover.view')} className="bg-zinc-700 text-zinc-300 hover:bg-zinc-600 transition-all duration-300"></PrimaryLink>
+                        <PrimaryLink text={messages.button_create} href={route('create.view')} className="shadow-md shadow-main/40 bg-zinc-900 border border-white hover:bg-zinc-700 transition-all duration-500 animate-pulse"></PrimaryLink>
+                        <PrimaryLink text={messages.button_discover} href={route('discover.view')} className="bg-zinc-700 text-zinc-300 hover:bg-zinc-600 transition-all duration-300"></PrimaryLink>
                     </div>
                 </div>
             </div>

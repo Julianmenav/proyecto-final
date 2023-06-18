@@ -5,7 +5,7 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
 import { useState } from "react";
 
-export default function AuthenticatedNavbar({ user }) {
+export default function AuthenticatedNavbar({ user, messages }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
 
@@ -104,21 +104,21 @@ export default function AuthenticatedNavbar({ user }) {
                                         <Dropdown.Link
                                             href={route("profile.edit")}
                                         >
-                                            Editar Perfil
+                                            {messages.edit_profile}
                                         </Dropdown.Link>
                                         <Dropdown.Link
                                             href={route("logout")}
                                             method="post"
                                             as="button"
                                         >
-                                            Log Out
+                                            {messages.logout}
                                         </Dropdown.Link>
                                         {
                                             !!user.is_admin &&
                                             (<Dropdown.Link
                                                 href={route("admin.view")}
                                             >
-                                                Panel admin
+                                                {messages.admin}
                                             </Dropdown.Link>)
                                         }
                                     </Dropdown.Content>

@@ -2,7 +2,7 @@ import GlobalLayout from "@/Layouts/GlobalLayout";
 import { router, Head, Link } from "@inertiajs/react";
 import React from "react";
 
-export default function AdminPanelUsers({ auth, errors, usersPaginator }) {
+export default function AdminPanelUsers({ auth, errors, usersPaginator, messages}) {
     console.log(usersPaginator);
 
 
@@ -18,7 +18,7 @@ export default function AdminPanelUsers({ auth, errors, usersPaginator }) {
     }
 
     return (
-        <GlobalLayout auth={auth} errors={errors}>
+        <GlobalLayout auth={auth} errors={errors} messages={messages}>
             <Head title="Admin Panel" />
             <section className="max-w-4xl m-auto mt-10">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

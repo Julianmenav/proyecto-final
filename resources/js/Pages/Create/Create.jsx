@@ -6,7 +6,7 @@ import GlobalLayout from "@/Layouts/GlobalLayout";
 import { Head } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 
-export default function Create(props) {
+export default function Create({auth, errors, messages}) {
     // Submit -> Generar Imagen (response)-> pintar en pantalla -> save(description y path) (antes era description y picture)
     const [prompt, setPrompt] = useState("")
     const [generatedPictureURL, setgeneratedPictureURL] = useState(null)
@@ -67,18 +67,18 @@ export default function Create(props) {
 	}
 
     return (
-        <GlobalLayout auth={props.auth} errors={props.errors}>
+        <GlobalLayout auth={auth} errors={errors} messages={messages}>
             <Head title="Create" />
             <form
                 onSubmit={submit}
                 className="flex flex-col items-center justify-center w-full mt-12"
             >
                 <div className="w-full max-w-4xl px-10">
-                    <p className="text-main text-md font-bold ">Escribe una descripción detallada</p>
+                    <p className="text-main text-md font-bold ">{messages.create_title}</p>
                     <TextInput
                         id="description"
                         className="mt-1 block w-full bg-gray-200 shadow-md text-black font-bold border-none focus:border-none focus:ring-0 placeholder-gray-600"
-                        placeholder="e.g: An expressive oil painting of a basketball player dunking..."
+                        placeholder={messages.create_placeholder}
                         value={prompt}
                         handleChange={handleDescriptionChange}
                         required
@@ -91,18 +91,18 @@ export default function Create(props) {
                     {
                         generatedPictureURL ? (
                             <>
-                                <p className="text-xl font-bold text-white">Listo! Tu imagen ha sido creada y añadida a tus obras!</p>
+                                <p className="text-xl font-bold text-white">{messages.ready}</p>
                                 <img src={generatedPictureURL} className="w-full max-w-xs lg:max-w-sm  shadow-xl rounded-md"></img>
                                 <div className='flex flex-wrap gap-3 justify-evenly mt-8 lg:mt-12 mb-12'>
-                                    <PrimaryLink text="Ver en tu galería" href={route('dashboard.view')} className="shadow-sm shadow-white/40 bg-zinc-900 text-white border border-white hover:bg-zinc-800 transition-all duration-300"></PrimaryLink>
-                                    <PrimaryLink text="Sigue creando" href={route('create.view')} className="bg-zinc-300 text-zinc-700 hover:bg-zinc-400 transition-all duration-300"></PrimaryLink>
+                                    <PrimaryLink text={messages.button_galery} href={route('dashboard.view')} className="shadow-sm shadow-white/40 bg-zinc-900 text-white border border-white hover:bg-zinc-800 transition-all duration-300"></PrimaryLink>
+                                    <PrimaryLink text={messages.button_create_2} href={route('create.view')} className="bg-zinc-300 text-zinc-700 hover:bg-zinc-400 transition-all duration-300"></PrimaryLink>
                                 </div>
                             </>
                         ) : loading ? (
                             <>
                                 <div className="text-left">
                                   <p className="text-lg font-bold text-white relative">
-                                    { progress < 65 ? 'Tu imagen está siendo generada' : 'Ya está casi lista'}
+                                    { progress < 65 ? messages.loading : messages.loading_2}
                                     <span className="absolute right-0 translate-x-full">{ellipsis}</span>
                                   </p>
                                 </div>
@@ -117,7 +117,7 @@ export default function Create(props) {
                                 className="px-4 py-3 bg-main h-full leading-3 0 text-md rounded-lg text-white font-bold hover:bg-main/[0.9] transition duration-300 ease-in-out"
                                 type="submit"
                             >
-                                Generar Imagen
+                                {messages.generate_button}
                             </button>
                             )
                     }

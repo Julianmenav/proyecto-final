@@ -8,7 +8,7 @@ import GlobalLayout from "@/Layouts/GlobalLayout";
 import { Head } from "@inertiajs/react";
 import { useEffect, useRef } from "react";
 
-export default function Discover({ auth, errors, picturesPag, morePages }) {
+export default function Discover({ auth, errors, picturesPag, morePages, messages }) {
     const {sortCategory, sortOrder, handleOrder, handleCategory} = useSort()
     const {pictures, showMore, processing, nextPage, removeImg} = usePaginate(picturesPag, morePages);
 
@@ -25,16 +25,18 @@ export default function Discover({ auth, errors, picturesPag, morePages }) {
     
 
     return (
-        <GlobalLayout auth={auth} errors={errors} >
-            <Head title="Descubre otras obras" />
+        <GlobalLayout auth={auth} errors={errors} messages={messages}>
+            <Head title="Discover" />
             <div className="flex items-center pb-2 px-5 md:px-10 border-b border-[#AC3FFF]/[0.8]">
-                <div className="text-white text-2xl ">Imágenes creadas por otros usuarios</div>
+                <div className="text-white text-2xl ">{messages.disc_title}</div>
             </div>
             <div id='content' className="px-2 sm:px-8 md:px-16 lg:px-28 mt-8 ">
-                <SortMenu sortCategory={sortCategory} sortOrder={sortOrder} handleOrder={handleOrder} handleCategory={handleCategory}/>
+                <SortMenu sortCategory={sortCategory} sortOrder={sortOrder} handleOrder={handleOrder} handleCategory={handleCategory} messages={messages}/>
                 <PictureGrid pictures={pictures} removeImg={removeImg} auth={auth}/>
             </div>
-            <ShowMoreButton refe={ref} className='w-full flex justify-center my-20' nextPage={nextPage} showMore={showMore} processing={processing}/>
+            <ShowMoreButton refe={ref} className='w-full flex justify-center my-20' nextPage={nextPage} showMore={showMore} processing={processing}>
+                {messages.see_more}
+            </ShowMoreButton>
         </GlobalLayout>
     );
 }

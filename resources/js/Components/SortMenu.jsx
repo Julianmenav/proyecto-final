@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SortMenu({handleCategory, sortCategory, handleOrder, sortOrder}) {
+export default function SortMenu({handleCategory, sortCategory, handleOrder, sortOrder, messages}) {
 
     return (
         <div className="flex h-7 items-center">
@@ -10,15 +10,15 @@ export default function SortMenu({handleCategory, sortCategory, handleOrder, sor
                 onChange={handleCategory}
                 value={sortCategory}
             >
-                <option className="bg-gray-700 text-white font-bold" value="like_count">Likes</option>
-                <option className="bg-gray-700 text-white font-bold" value="created_at">Fecha de Subida</option>
+                <option className="bg-gray-700 text-white font-bold" value="like_count">{messages.like}</option>
+                <option className="bg-gray-700 text-white font-bold" value="created_at">{messages.date}</option>
             </select>
             <button
                 onClick={handleOrder}
                 className="ml-2  px-4 bg-[#AC3FFF] h-full leading-3 0 text-sm rounded-lg text-white font-bold hover:bg-[#bb63ff] transition duration-300 ease-in-out"
             >
-                {sortOrder == "desc" ? "descend." : "ascend."}
+                {sortOrder == "desc" ? messages.desc : messages.asc}
             </button>
-        </div>
+        </div> 
     );
 }

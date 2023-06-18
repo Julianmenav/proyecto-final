@@ -16,6 +16,7 @@ return [
     'subtitle_2' => 'Crea imágenes asombrosas y compártelas.',
     'button_create' => 'Comienza a crear',
     'button_discover' => 'Descubre más',
+    'img_created_by' => 'Imagen creada por',
     'pass' => 'Contraseña',
     'session' => 'Mantener la sesión iniciada',
     'register' => 'Regístrate',

@@ -110,5 +110,5 @@ Control de versiones: Git
 
 # Video explicativo
 
-[Click para ver video en youtube](https://youtu.be/MhpPijsZVeM)
+[Click para ver video en youtube](https://youtu.be/lrpSdo49GU8)
 

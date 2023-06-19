@@ -10,6 +10,7 @@ export default function useOnScreen(ref) {
   
   
     useEffect(() => {
+      if(!ref.current) return
       observer.observe(ref.current)
       return () => observer.disconnect()
     }, [])

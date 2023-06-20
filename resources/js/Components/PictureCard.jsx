@@ -48,7 +48,7 @@ export default function PictureCard({
                     <img
                         className="transform-gpu min-w-full aspect-auto"
                         src={picture.image_url}
-                        alt="imagenCreadaPorUsuario"
+                        alt="picture"
                     />
                     <div
                         id="mask"

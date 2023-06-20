@@ -23,7 +23,7 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
         <section className={className}>
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
-                    <InputLabel for="name" value="Nombre" className={'text-zinc-100'}/>
+                    <InputLabel for="name" value={messages.name} className={'text-zinc-100'}/>
                     <TextInput
                         id="name"
                         className="mt-1 block w-full"

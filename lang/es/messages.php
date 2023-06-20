@@ -40,6 +40,8 @@ return [
     'button_galery' => 'Ver en tu galería',
     'button_create_2' => 'Sigue creando',
     'works' => 'Obras',
+    'empty' => 'Parece que no hay nada aquí',
+    'button_discover_2' => 'Descubre otras obras',
     'created' => 'Imágenes creadas',
     'stored' => 'Imágenes guardadas',
     'comments' => 'Comentarios',

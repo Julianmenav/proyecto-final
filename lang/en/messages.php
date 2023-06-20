@@ -42,6 +42,8 @@ return [
     'works' => 'Works',
     'created' => 'Images created',
     'stored' => 'Images saved',
+    'empty' => 'It seems there is nothing here',
+    'button_discover_2' => 'Check out other works',
     'comments' => 'Comments',
     'add_comment' => 'Add a comment...',
     'comment_button' => 'Comment',

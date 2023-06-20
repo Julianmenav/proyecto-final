@@ -72,19 +72,19 @@ export default function Dashboard({
                                     alt=""
                                 />
                                 <p className="text-white text-xl py-2 md:text-4xl text-bold">
-                                    ... Parece que no hay nada aquí.
+                                    ... {messages.empty}
                                 </p>
                             </div>
                             <div className="flex justify-center">
                                 {relation === "own" ? (
                                     <PrimaryLink
-                                        text="Comienza a crear"
+                                        text={messages.button_create}
                                         href={route("create.view")}
                                         className="bg-gray-100 text-black hover:bg-gray-200"
                                     ></PrimaryLink>
                                 ) : (
                                     <PrimaryLink
-                                        text="Descubre otras obras"
+                                        text={messages.button_discover_2}
                                         href={route("discover.view")}
                                         className="bg-gray-100 text-black hover:bg-gray-200"
                                     ></PrimaryLink>

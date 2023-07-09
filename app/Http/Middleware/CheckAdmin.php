@@ -17,7 +17,7 @@ class CheckAdmin
     public function handle(Request $request, Closure $next)
     {
         if(!$request->user()->is_admin){
-            return redirect()->route('welcome.view');
+            abort(403);
         }
         return $next($request);
     }
